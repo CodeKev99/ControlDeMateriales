@@ -9,6 +9,7 @@ import FiveCodMover.FiveCodMoverJFrame;
 import java.awt.Color;
 import java.awt.Frame;
 
+
 /**
  *
  * @author Kevin
@@ -37,18 +38,17 @@ public class DashBoard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        rSButtonCustom1 = new rsbuttoncustom.RSButtonCustom();
-        rSButtonCustom2 = new rsbuttoncustom.RSButtonCustom();
-        rSButtonCustom3 = new rsbuttoncustom.RSButtonCustom();
-        rSButtonCustom4 = new rsbuttoncustom.RSButtonCustom();
-        rSButtonCustom5 = new rsbuttoncustom.RSButtonCustom();
-        rSButtonCustom6 = new rsbuttoncustom.RSButtonCustom();
-        rSButtonCustom7 = new rsbuttoncustom.RSButtonCustom();
-        rSButtonMaterialUno1 = new RSMaterialComponent.RSButtonMaterialUno();
-        jPanel2 = new javax.swing.JPanel();
+        btnReportes = new rojerusan.RSButtonHover();
+        btnProyecto = new rojerusan.RSButtonHover();
+        btnConsumo = new rojerusan.RSButtonHover();
+        btnInventario = new rojerusan.RSButtonHover();
+        btnCompras = new rojerusan.RSButtonHover();
+        btnProveedores = new rojerusan.RSButtonHover();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         PanelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,141 +60,158 @@ public class DashBoard extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_male_user_110px.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre");
 
-        rSButtonCustom1.setBackground(new java.awt.Color(33, 45, 62));
-        rSButtonCustom1.setForeground(new java.awt.Color(255, 255, 255));
-        rSButtonCustom1.setText("Inicio");
-        rSButtonCustom1.setColorMaterial(new java.awt.Color(65, 165, 238));
-        rSButtonCustom1.setFont(new java.awt.Font("Roboto Bold", 1, 15)); // NOI18N
-
-        rSButtonCustom2.setBackground(new java.awt.Color(33, 45, 62));
-        rSButtonCustom2.setForeground(new java.awt.Color(255, 255, 255));
-        rSButtonCustom2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_paste_30px_1.png"))); // NOI18N
-        rSButtonCustom2.setText("Proyecto");
-        rSButtonCustom2.setColorMaterial(new java.awt.Color(65, 165, 238));
-        rSButtonCustom2.setFont(new java.awt.Font("Roboto Bold", 1, 15)); // NOI18N
-        rSButtonCustom2.addActionListener(new java.awt.event.ActionListener() {
+        btnReportes.setBackground(new java.awt.Color(33, 45, 62));
+        btnReportes.setBorder(null);
+        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_bar_chart_30px.png"))); // NOI18N
+        btnReportes.setText("Reportes");
+        btnReportes.setColorHover(new java.awt.Color(65, 165, 238));
+        btnReportes.setFocusPainted(false);
+        btnReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportesMouseClicked(evt);
+            }
+        });
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonCustom2ActionPerformed(evt);
+                btnReportesActionPerformed(evt);
             }
         });
 
-        rSButtonCustom3.setBackground(new java.awt.Color(33, 45, 62));
-        rSButtonCustom3.setForeground(new java.awt.Color(255, 255, 255));
-        rSButtonCustom3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_statistics_30px.png"))); // NOI18N
-        rSButtonCustom3.setText("Consumo");
-        rSButtonCustom3.setColorMaterial(new java.awt.Color(65, 165, 238));
-        rSButtonCustom3.setFont(new java.awt.Font("Roboto Bold", 1, 15)); // NOI18N
-        rSButtonCustom3.addActionListener(new java.awt.event.ActionListener() {
+        btnProyecto.setBackground(new java.awt.Color(33, 45, 62));
+        btnProyecto.setBorder(null);
+        btnProyecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_paste_30px_1.png"))); // NOI18N
+        btnProyecto.setText("Proyecto");
+        btnProyecto.setColorHover(new java.awt.Color(65, 165, 238));
+        btnProyecto.setFocusPainted(false);
+        btnProyecto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProyectoMouseClicked(evt);
+            }
+        });
+        btnProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonCustom3ActionPerformed(evt);
+                btnProyectoActionPerformed(evt);
             }
         });
 
-        rSButtonCustom4.setBackground(new java.awt.Color(33, 45, 62));
-        rSButtonCustom4.setForeground(new java.awt.Color(255, 255, 255));
-        rSButtonCustom4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_empty_box_30px.png"))); // NOI18N
-        rSButtonCustom4.setText("Inventario");
-        rSButtonCustom4.setColorMaterial(new java.awt.Color(65, 165, 238));
-        rSButtonCustom4.setFont(new java.awt.Font("Roboto Bold", 1, 15)); // NOI18N
-        rSButtonCustom4.addActionListener(new java.awt.event.ActionListener() {
+        btnConsumo.setBackground(new java.awt.Color(33, 45, 62));
+        btnConsumo.setBorder(null);
+        btnConsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_statistics_30px.png"))); // NOI18N
+        btnConsumo.setText("Consumo");
+        btnConsumo.setColorHover(new java.awt.Color(65, 165, 238));
+        btnConsumo.setFocusPainted(false);
+        btnConsumo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConsumoMouseClicked(evt);
+            }
+        });
+        btnConsumo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonCustom4ActionPerformed(evt);
+                btnConsumoActionPerformed(evt);
             }
         });
 
-        rSButtonCustom5.setBackground(new java.awt.Color(33, 45, 62));
-        rSButtonCustom5.setForeground(new java.awt.Color(255, 255, 255));
-        rSButtonCustom5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_shopping_cart_30px.png"))); // NOI18N
-        rSButtonCustom5.setText("Compras");
-        rSButtonCustom5.setColorMaterial(new java.awt.Color(65, 165, 238));
-        rSButtonCustom5.setFont(new java.awt.Font("Roboto Bold", 1, 15)); // NOI18N
-        rSButtonCustom5.addActionListener(new java.awt.event.ActionListener() {
+        btnInventario.setBackground(new java.awt.Color(33, 45, 62));
+        btnInventario.setBorder(null);
+        btnInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_empty_box_30px.png"))); // NOI18N
+        btnInventario.setText("Inventario");
+        btnInventario.setColorHover(new java.awt.Color(65, 165, 238));
+        btnInventario.setFocusPainted(false);
+        btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInventarioMouseClicked(evt);
+            }
+        });
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonCustom5ActionPerformed(evt);
+                btnInventarioActionPerformed(evt);
             }
         });
 
-        rSButtonCustom6.setBackground(new java.awt.Color(33, 45, 62));
-        rSButtonCustom6.setForeground(new java.awt.Color(255, 255, 255));
-        rSButtonCustom6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_user_groups_30px.png"))); // NOI18N
-        rSButtonCustom6.setText("Proveedores");
-        rSButtonCustom6.setColorMaterial(new java.awt.Color(65, 165, 238));
-        rSButtonCustom6.setFont(new java.awt.Font("Roboto Bold", 1, 15)); // NOI18N
-        rSButtonCustom6.addActionListener(new java.awt.event.ActionListener() {
+        btnCompras.setBackground(new java.awt.Color(33, 45, 62));
+        btnCompras.setBorder(null);
+        btnCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_shopping_cart_30px.png"))); // NOI18N
+        btnCompras.setText("Compras");
+        btnCompras.setColorHover(new java.awt.Color(65, 165, 238));
+        btnCompras.setFocusPainted(false);
+        btnCompras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnComprasMouseClicked(evt);
+            }
+        });
+        btnCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonCustom6ActionPerformed(evt);
+                btnComprasActionPerformed(evt);
             }
         });
 
-        rSButtonCustom7.setBackground(new java.awt.Color(33, 45, 62));
-        rSButtonCustom7.setForeground(new java.awt.Color(255, 255, 255));
-        rSButtonCustom7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_bar_chart_30px.png"))); // NOI18N
-        rSButtonCustom7.setText("Reportes");
-        rSButtonCustom7.setColorMaterial(new java.awt.Color(65, 165, 238));
-        rSButtonCustom7.setFont(new java.awt.Font("Roboto Bold", 1, 15)); // NOI18N
-        rSButtonCustom7.addActionListener(new java.awt.event.ActionListener() {
+        btnProveedores.setBackground(new java.awt.Color(33, 45, 62));
+        btnProveedores.setBorder(null);
+        btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_user_groups_30px.png"))); // NOI18N
+        btnProveedores.setText("Proveedores");
+        btnProveedores.setColorHover(new java.awt.Color(65, 165, 238));
+        btnProveedores.setFocusPainted(false);
+        btnProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProveedoresMouseClicked(evt);
+            }
+        });
+        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonCustom7ActionPerformed(evt);
+                btnProveedoresActionPerformed(evt);
             }
         });
 
-        rSButtonMaterialUno1.setBackground(new java.awt.Color(33, 45, 62));
-        rSButtonMaterialUno1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_empty_box_30px_1.png"))); // NOI18N
-        rSButtonMaterialUno1.setText("Inventario");
-        rSButtonMaterialUno1.setBackgroundHover(new java.awt.Color(65, 165, 238));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_logout_rounded_left_50px_1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSButtonCustom2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-            .addComponent(rSButtonCustom3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(rSButtonCustom4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(rSButtonCustom5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel5))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(rSButtonCustom6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(rSButtonCustom7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(rSButtonCustom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(rSButtonMaterialUno1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel5))
+            .addComponent(btnProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(btnProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rSButtonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rSButtonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rSButtonCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rSButtonCustom4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rSButtonCustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rSButtonCustom6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rSButtonCustom7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rSButtonMaterialUno1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 600));
 
         jPanel2.setBackground(new java.awt.Color(65, 165, 238));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -209,48 +226,24 @@ public class DashBoard extends javax.swing.JFrame {
         });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_delete_35px_4.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jLabel1MouseDragged(evt);
-            }
-        });
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel1MouseReleased(evt);
-            }
-        });
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(791, 6, 34, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/color-helper.png"))); // NOI18N
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, 47, 35));
-
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_menu_50px_1.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 48));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 48));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 840, 54));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/color-helper.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 30, 40));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_delete_35px_4.png"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 860, 54));
 
         PanelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         PanelPrincipal.setLayout(new javax.swing.BoxLayout(PanelPrincipal, javax.swing.BoxLayout.LINE_AXIS));
-        getContentPane().add(PanelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 820, 550));
+        getContentPane().add(PanelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 860, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
          FiveCodMoverJFrame.MousePressed(evt);
@@ -260,41 +253,103 @@ public class DashBoard extends javax.swing.JFrame {
         FiveCodMoverJFrame.MouseDraggedFrame(evt, this);
     }//GEN-LAST:event_jPanel2MouseDragged
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-       this.setState(DashBoard.ICONIFIED);
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         
-    }//GEN-LAST:event_jLabel1MouseDragged
+    }//GEN-LAST:event_btnReportesActionPerformed
 
-    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
-      
-    }//GEN-LAST:event_jLabel1MouseReleased
+    private void btnReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseClicked
+        
+        if(btnReportes.isFocusable()){
+            btnReportes.setBackground(new java.awt.Color(65,165,238));
+            btnProyecto.setBackground(new java.awt.Color(33,45,62));
+            btnConsumo.setBackground(new java.awt.Color(33,45,62));
+            btnInventario.setBackground(new java.awt.Color(33,45,62));
+            btnCompras.setBackground(new java.awt.Color(33,45,62));
+            btnProveedores.setBackground(new java.awt.Color(33,45,62));
+            
+        }
+        
+    }//GEN-LAST:event_btnReportesMouseClicked
 
-    private void rSButtonCustom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonCustom2ActionPerformed
+    private void btnProyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProyectoMouseClicked
+       if(btnProyecto.isFocusable()){
+            btnProyecto.setBackground(new java.awt.Color(65,165,238));
+            btnReportes.setBackground(new java.awt.Color(33,45,62));
+            btnConsumo.setBackground(new java.awt.Color(33,45,62));
+            btnInventario.setBackground(new java.awt.Color(33,45,62));
+            btnCompras.setBackground(new java.awt.Color(33,45,62));
+            btnProveedores.setBackground(new java.awt.Color(33,45,62));
+            
+        }
+    }//GEN-LAST:event_btnProyectoMouseClicked
+
+    private void btnProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProyectoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSButtonCustom2ActionPerformed
+    }//GEN-LAST:event_btnProyectoActionPerformed
 
-    private void rSButtonCustom3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonCustom3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rSButtonCustom3ActionPerformed
+    private void btnConsumoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsumoMouseClicked
+       if(btnConsumo.isFocusable()){
+            btnConsumo.setBackground(new java.awt.Color(65,165,238));
+            btnReportes.setBackground(new java.awt.Color(33,45,62));
+            btnProyecto.setBackground(new java.awt.Color(33,45,62));
+            btnInventario.setBackground(new java.awt.Color(33,45,62));
+            btnCompras.setBackground(new java.awt.Color(33,45,62));
+            btnProveedores.setBackground(new java.awt.Color(33,45,62));
+            
+        }
+    }//GEN-LAST:event_btnConsumoMouseClicked
 
-    private void rSButtonCustom4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonCustom4ActionPerformed
+    private void btnConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsumoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSButtonCustom4ActionPerformed
+    }//GEN-LAST:event_btnConsumoActionPerformed
 
-    private void rSButtonCustom5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonCustom5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rSButtonCustom5ActionPerformed
+    private void btnInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseClicked
+      if(btnInventario.isFocusable()){
+            btnInventario.setBackground(new java.awt.Color(65,165,238));
+            btnReportes.setBackground(new java.awt.Color(33,45,62));
+            btnConsumo.setBackground(new java.awt.Color(33,45,62));
+            btnProyecto.setBackground(new java.awt.Color(33,45,62));
+            btnCompras.setBackground(new java.awt.Color(33,45,62));
+            btnProveedores.setBackground(new java.awt.Color(33,45,62));
+            
+        }
+    }//GEN-LAST:event_btnInventarioMouseClicked
 
-    private void rSButtonCustom6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonCustom6ActionPerformed
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSButtonCustom6ActionPerformed
+    }//GEN-LAST:event_btnInventarioActionPerformed
 
-    private void rSButtonCustom7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonCustom7ActionPerformed
+    private void btnComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprasMouseClicked
+        if(btnCompras.isFocusable()){
+            btnCompras.setBackground(new java.awt.Color(65,165,238));
+            btnReportes.setBackground(new java.awt.Color(33,45,62));
+            btnConsumo.setBackground(new java.awt.Color(33,45,62));
+            btnInventario.setBackground(new java.awt.Color(33,45,62));
+            btnProyecto.setBackground(new java.awt.Color(33,45,62));
+            btnProveedores.setBackground(new java.awt.Color(33,45,62));
+            
+        }
+    }//GEN-LAST:event_btnComprasMouseClicked
+
+    private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rSButtonCustom7ActionPerformed
+    }//GEN-LAST:event_btnComprasActionPerformed
+
+    private void btnProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseClicked
+        if(btnProveedores.isFocusable()){
+            btnProveedores.setBackground(new java.awt.Color(65,165,238));
+            btnReportes.setBackground(new java.awt.Color(33,45,62));
+            btnConsumo.setBackground(new java.awt.Color(33,45,62));
+            btnInventario.setBackground(new java.awt.Color(33,45,62));
+            btnCompras.setBackground(new java.awt.Color(33,45,62));
+            btnProyecto.setBackground(new java.awt.Color(33,45,62));
+            
+        }
+    }//GEN-LAST:event_btnProveedoresMouseClicked
+
+    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProveedoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,21 +388,20 @@ public class DashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public transient javax.swing.JPanel PanelPrincipal;
+    private rojerusan.RSButtonHover btnCompras;
+    private rojerusan.RSButtonHover btnConsumo;
+    private rojerusan.RSButtonHover btnInventario;
+    private rojerusan.RSButtonHover btnProveedores;
+    private rojerusan.RSButtonHover btnProyecto;
+    private rojerusan.RSButtonHover btnReportes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private rsbuttoncustom.RSButtonCustom rSButtonCustom1;
-    private rsbuttoncustom.RSButtonCustom rSButtonCustom2;
-    private rsbuttoncustom.RSButtonCustom rSButtonCustom3;
-    private rsbuttoncustom.RSButtonCustom rSButtonCustom4;
-    private rsbuttoncustom.RSButtonCustom rSButtonCustom5;
-    private rsbuttoncustom.RSButtonCustom rSButtonCustom6;
-    private rsbuttoncustom.RSButtonCustom rSButtonCustom7;
-    private RSMaterialComponent.RSButtonMaterialUno rSButtonMaterialUno1;
     private rojeru_san.efectos.Roboto roboto1;
     // End of variables declaration//GEN-END:variables
 }
