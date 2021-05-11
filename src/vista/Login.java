@@ -5,14 +5,14 @@
  */
 package vista;
 
+
 import FiveCodMover.FiveCodMoverJFrame;
 import com.sun.awt.AWTUtilities;
 import java.awt.Shape;
+import java.awt.event.KeyEvent;
 import java.awt.geom.RoundRectangle2D;
-import java.util.Timer;
-import java.util.TimerTask;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+import necesario.FadeEffect;
+import vista.Alertas.AWTUtilitie;
 
 /**
  *
@@ -32,6 +32,8 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
+        AWTUtilitie.setOpaque(this, false);
+        FadeEffect.fadeInFrame(this, 50, 0.1f);
         
     }
 
@@ -111,6 +113,11 @@ public class Login extends javax.swing.JFrame {
         txtcorreo.setForeground(new java.awt.Color(65, 165, 238));
         txtcorreo.setBorder(null);
         txtcorreo.setCaretColor(new java.awt.Color(65, 165, 238));
+        txtcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcorreoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 270, 40));
 
         txtpassword.setBackground(new java.awt.Color(33, 45, 62));
@@ -118,6 +125,11 @@ public class Login extends javax.swing.JFrame {
         txtpassword.setForeground(new java.awt.Color(65, 165, 238));
         txtpassword.setBorder(null);
         txtpassword.setCaretColor(new java.awt.Color(65, 165, 238));
+        txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtpasswordKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 270, 36));
 
         jSeparator1.setBackground(new java.awt.Color(65, 165, 238));
@@ -165,6 +177,11 @@ public class Login extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
+        btnIngresar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnIngresarKeyTyped(evt);
+            }
+        });
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 200, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 400, 600));
@@ -199,6 +216,24 @@ public class Login extends javax.swing.JFrame {
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
        FiveCodMoverJFrame.MousePressed(evt);
     }//GEN-LAST:event_jPanel1MousePressed
+
+    private void btnIngresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIngresarKeyTyped
+       
+    }//GEN-LAST:event_btnIngresarKeyTyped
+
+    private void txtpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyTyped
+         if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
+            DashBoard D = new DashBoard();
+            D.show();
+            this.dispose();
+        }
+    }//GEN-LAST:event_txtpasswordKeyTyped
+
+    private void txtcorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcorreoKeyTyped
+        if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
+            txtpassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtcorreoKeyTyped
 
     /**
      * @param args the command line arguments

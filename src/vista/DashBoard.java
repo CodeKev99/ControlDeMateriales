@@ -6,8 +6,8 @@
 package vista;
 
 import FiveCodMover.FiveCodMoverJFrame;
-import java.awt.Color;
-import java.awt.Frame;
+import necesario.FadeEffect;
+import vista.Alertas.warnningCerrar;
 
 
 /**
@@ -22,7 +22,8 @@ public class DashBoard extends javax.swing.JFrame {
     public DashBoard() {
         initComponents();
         setLocationRelativeTo(null);
-        new CambiaPanel(PanelPrincipal, new Inicio());
+        CambiaPanel cambiaPanel = new CambiaPanel(PanelPrincipal, new Inicio());
+        FadeEffect.fadeInFrame(this, 50, 0.1f);
     }
 
     /**
@@ -57,18 +58,21 @@ public class DashBoard extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(33, 45, 62));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_male_user_110px.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 111));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 170, 26));
 
         btnReportes.setBackground(new java.awt.Color(33, 45, 62));
         btnReportes.setBorder(null);
         btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_bar_chart_30px.png"))); // NOI18N
         btnReportes.setText("Reportes");
-        btnReportes.setColorHover(new java.awt.Color(65, 165, 238));
+        btnReportes.setColorHover(new java.awt.Color(64, 68, 81));
         btnReportes.setFocusPainted(false);
         btnReportes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,12 +84,13 @@ public class DashBoard extends javax.swing.JFrame {
                 btnReportesActionPerformed(evt);
             }
         });
+        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 446, 170, -1));
 
         btnProyecto.setBackground(new java.awt.Color(33, 45, 62));
         btnProyecto.setBorder(null);
         btnProyecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_paste_30px_1.png"))); // NOI18N
         btnProyecto.setText("Proyecto");
-        btnProyecto.setColorHover(new java.awt.Color(65, 165, 238));
+        btnProyecto.setColorHover(new java.awt.Color(64, 68, 81));
         btnProyecto.setFocusPainted(false);
         btnProyecto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,12 +102,13 @@ public class DashBoard extends javax.swing.JFrame {
                 btnProyectoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, -1));
 
         btnConsumo.setBackground(new java.awt.Color(33, 45, 62));
         btnConsumo.setBorder(null);
-        btnConsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_statistics_30px.png"))); // NOI18N
+        btnConsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_graph_30px_1.png"))); // NOI18N
         btnConsumo.setText("Consumo");
-        btnConsumo.setColorHover(new java.awt.Color(65, 165, 238));
+        btnConsumo.setColorHover(new java.awt.Color(64, 68, 81));
         btnConsumo.setFocusPainted(false);
         btnConsumo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -114,12 +120,13 @@ public class DashBoard extends javax.swing.JFrame {
                 btnConsumoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnConsumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 256, 170, -1));
 
         btnInventario.setBackground(new java.awt.Color(33, 45, 62));
         btnInventario.setBorder(null);
         btnInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_empty_box_30px.png"))); // NOI18N
         btnInventario.setText("Inventario");
-        btnInventario.setColorHover(new java.awt.Color(65, 165, 238));
+        btnInventario.setColorHover(new java.awt.Color(64, 68, 81));
         btnInventario.setFocusPainted(false);
         btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -131,12 +138,13 @@ public class DashBoard extends javax.swing.JFrame {
                 btnInventarioActionPerformed(evt);
             }
         });
+        jPanel1.add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 308, 170, -1));
 
         btnCompras.setBackground(new java.awt.Color(33, 45, 62));
         btnCompras.setBorder(null);
         btnCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_shopping_cart_30px.png"))); // NOI18N
         btnCompras.setText("Compras");
-        btnCompras.setColorHover(new java.awt.Color(65, 165, 238));
+        btnCompras.setColorHover(new java.awt.Color(64, 68, 81));
         btnCompras.setFocusPainted(false);
         btnCompras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -148,12 +156,13 @@ public class DashBoard extends javax.swing.JFrame {
                 btnComprasActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 354, 170, -1));
 
         btnProveedores.setBackground(new java.awt.Color(33, 45, 62));
         btnProveedores.setBorder(null);
         btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_user_groups_30px.png"))); // NOI18N
         btnProveedores.setText("Proveedores");
-        btnProveedores.setColorHover(new java.awt.Color(65, 165, 238));
+        btnProveedores.setColorHover(new java.awt.Color(64, 68, 81));
         btnProveedores.setFocusPainted(false);
         btnProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -165,51 +174,15 @@ public class DashBoard extends javax.swing.JFrame {
                 btnProveedoresActionPerformed(evt);
             }
         });
+        jPanel1.add(btnProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 170, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_logout_rounded_left_50px_1.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel5))
-            .addComponent(btnProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel1))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(btnProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 531, -1, 60));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 600));
 
@@ -231,9 +204,21 @@ public class DashBoard extends javax.swing.JFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 48));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/color-helper.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 30, 40));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_delete_35px_4.png"))); // NOI18N
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 860, 54));
@@ -281,6 +266,7 @@ public class DashBoard extends javax.swing.JFrame {
             btnProveedores.setBackground(new java.awt.Color(33,45,62));
             
         }
+        CambiaPanel cambiaPanel = new CambiaPanel(PanelPrincipal, new PnlProyecto());
     }//GEN-LAST:event_btnProyectoMouseClicked
 
     private void btnProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProyectoActionPerformed
@@ -313,6 +299,7 @@ public class DashBoard extends javax.swing.JFrame {
             btnProveedores.setBackground(new java.awt.Color(33,45,62));
             
         }
+       CambiaPanel cambiaPanel = new CambiaPanel(PanelPrincipal, new PInventario());
     }//GEN-LAST:event_btnInventarioMouseClicked
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
@@ -350,6 +337,27 @@ public class DashBoard extends javax.swing.JFrame {
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProveedoresActionPerformed
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        this.setExtendedState(DashBoard.ICONIFIED);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        warnningCerrar wa = new warnningCerrar(this, true);
+        wa.titulo.setText("¿ESTAS SEGURO?");
+        wa.msj.setText("SE CERRARA LA SESIÓN ACTUAL");
+        wa.msj1.setText("");
+        wa.setVisible(true);
+        
+       if (warnningCerrar.salir) {
+            this.dispose();
+            new Login().setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments

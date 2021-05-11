@@ -26,6 +26,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,44,0,0,1,-112"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -44,54 +45,8 @@
         </Constraint>
       </Constraints>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jLabel4" min="-2" pref="170" max="-2" attributes="0"/>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <Component id="btnProyecto" min="-2" pref="170" max="-2" attributes="0"/>
-              <Component id="btnConsumo" min="-2" pref="170" max="-2" attributes="0"/>
-              <Component id="btnInventario" min="-2" pref="170" max="-2" attributes="0"/>
-              <Component id="btnCompras" min="-2" pref="170" max="-2" attributes="0"/>
-              <Component id="btnProveedores" min="-2" pref="170" max="-2" attributes="0"/>
-              <Component id="btnReportes" min="-2" pref="170" max="-2" attributes="0"/>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="110" pref="110" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" pref="26" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jLabel5" min="-2" pref="111" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
-                  <Component id="btnProyecto" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnConsumo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btnInventario" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnCompras" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnProveedores" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnReportes" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="60" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -100,6 +55,11 @@
               <Image iconType="3" name="/vista/iconos/icons8_male_user_110px.png"/>
             </Property>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="30" y="50" width="-1" height="111"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -111,6 +71,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre"/>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="160" width="170" height="26"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="rojerusan.RSButtonHover" name="btnReportes">
           <Properties>
@@ -125,7 +90,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Reportes"/>
             <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="a5" red="41" type="rgb"/>
+              <Color blue="51" green="44" red="40" type="rgb"/>
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
@@ -133,6 +98,11 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnReportesMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReportesActionPerformed"/>
           </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="446" width="170" height="-1"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="rojerusan.RSButtonHover" name="btnProyecto">
           <Properties>
@@ -147,7 +117,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Proyecto"/>
             <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="a5" red="41" type="rgb"/>
+              <Color blue="51" green="44" red="40" type="rgb"/>
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
@@ -155,6 +125,11 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnProyectoMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProyectoActionPerformed"/>
           </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="210" width="170" height="-1"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="rojerusan.RSButtonHover" name="btnConsumo">
           <Properties>
@@ -165,11 +140,11 @@
               <Border info="null"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/vista/iconos/icons8_statistics_30px.png"/>
+              <Image iconType="3" name="/vista/iconos/icons8_graph_30px_1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consumo"/>
             <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="a5" red="41" type="rgb"/>
+              <Color blue="51" green="44" red="40" type="rgb"/>
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
@@ -177,6 +152,11 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsumoMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsumoActionPerformed"/>
           </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="256" width="170" height="-1"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="rojerusan.RSButtonHover" name="btnInventario">
           <Properties>
@@ -191,7 +171,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Inventario"/>
             <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="a5" red="41" type="rgb"/>
+              <Color blue="51" green="44" red="40" type="rgb"/>
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
@@ -199,6 +179,11 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnInventarioMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInventarioActionPerformed"/>
           </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="308" width="170" height="-1"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="rojerusan.RSButtonHover" name="btnCompras">
           <Properties>
@@ -213,7 +198,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Compras"/>
             <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="a5" red="41" type="rgb"/>
+              <Color blue="51" green="44" red="40" type="rgb"/>
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
@@ -221,6 +206,11 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnComprasMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnComprasActionPerformed"/>
           </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="354" width="170" height="-1"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="rojerusan.RSButtonHover" name="btnProveedores">
           <Properties>
@@ -235,7 +225,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Proveedores"/>
             <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="a5" red="41" type="rgb"/>
+              <Color blue="51" green="44" red="40" type="rgb"/>
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
@@ -243,6 +233,11 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnProveedoresMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProveedoresActionPerformed"/>
           </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="400" width="170" height="-1"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -250,6 +245,14 @@
               <Image iconType="3" name="/vista/iconos/icons8_logout_rounded_left_50px_1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseClicked"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="531" width="-1" height="60"/>
+            </Constraint>
+          </Constraints>
         </Component>
       </SubComponents>
     </Container>
@@ -293,7 +296,13 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/vista/iconos/color-helper.png"/>
             </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="790" y="0" width="30" height="40"/>
@@ -305,7 +314,13 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/vista/iconos/icons8_delete_35px_4.png"/>
             </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel6MouseClicked"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="820" y="10" width="-1" height="30"/>
