@@ -177,6 +177,7 @@ public class DashBoard extends javax.swing.JFrame {
         jPanel1.add(btnProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 170, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_logout_rounded_left_50px_1.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);

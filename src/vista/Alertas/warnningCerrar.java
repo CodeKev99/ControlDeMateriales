@@ -71,6 +71,7 @@ public class warnningCerrar extends javax.swing.JDialog {
         btnCancelar.setBackground(new java.awt.Color(204, 0, 0));
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("CANCELAR");
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +82,7 @@ public class warnningCerrar extends javax.swing.JDialog {
         btnAceptar.setBackground(new java.awt.Color(65, 165, 238));
         btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptar.setText("ACEPTAR");
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

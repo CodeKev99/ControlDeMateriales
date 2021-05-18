@@ -16,6 +16,7 @@ public class PInventario extends javax.swing.JPanel {
      */
     public PInventario() {
         initComponents();
+        
     }
 
     /**
@@ -200,6 +201,9 @@ public class PInventario extends javax.swing.JPanel {
     private void txtBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscarMouseClicked
         if(txtBuscar.isFocusable()){
            txtBuscar.setText("");
+        }
+        else{
+            txtBuscar.setText("BUSCAR");
         }
     }//GEN-LAST:event_txtBuscarMouseClicked
 
