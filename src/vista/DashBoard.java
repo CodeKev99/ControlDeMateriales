@@ -36,7 +36,7 @@ public class DashBoard extends javax.swing.JFrame {
     private void initComponents() {
 
         roboto1 = new rojeru_san.efectos.Roboto();
-        jPanel1 = new javax.swing.JPanel();
+        pnlMenu = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnReportes = new rojerusan.RSButtonHover();
@@ -47,7 +47,7 @@ public class DashBoard extends javax.swing.JFrame {
         btnProveedores = new rojerusan.RSButtonHover();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        btnMenu = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         PanelPrincipal = new javax.swing.JPanel();
@@ -57,16 +57,16 @@ public class DashBoard extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(600, 926));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(33, 45, 62));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlMenu.setBackground(new java.awt.Color(33, 45, 62));
+        pnlMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_male_user_110px.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 111));
+        pnlMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 111));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 170, 26));
+        pnlMenu.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 26));
 
         btnReportes.setBackground(new java.awt.Color(33, 45, 62));
         btnReportes.setBorder(null);
@@ -84,7 +84,7 @@ public class DashBoard extends javax.swing.JFrame {
                 btnReportesActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 446, 170, -1));
+        pnlMenu.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 170, -1));
 
         btnProyecto.setBackground(new java.awt.Color(33, 45, 62));
         btnProyecto.setBorder(null);
@@ -102,7 +102,7 @@ public class DashBoard extends javax.swing.JFrame {
                 btnProyectoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, -1));
+        pnlMenu.add(btnProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, -1));
 
         btnConsumo.setBackground(new java.awt.Color(33, 45, 62));
         btnConsumo.setBorder(null);
@@ -120,7 +120,7 @@ public class DashBoard extends javax.swing.JFrame {
                 btnConsumoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConsumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 256, 170, -1));
+        pnlMenu.add(btnConsumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, -1));
 
         btnInventario.setBackground(new java.awt.Color(33, 45, 62));
         btnInventario.setBorder(null);
@@ -138,7 +138,7 @@ public class DashBoard extends javax.swing.JFrame {
                 btnInventarioActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 308, 170, -1));
+        pnlMenu.add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 170, -1));
 
         btnCompras.setBackground(new java.awt.Color(33, 45, 62));
         btnCompras.setBorder(null);
@@ -156,7 +156,7 @@ public class DashBoard extends javax.swing.JFrame {
                 btnComprasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 354, 170, -1));
+        pnlMenu.add(btnCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 170, -1));
 
         btnProveedores.setBackground(new java.awt.Color(33, 45, 62));
         btnProveedores.setBorder(null);
@@ -174,7 +174,7 @@ public class DashBoard extends javax.swing.JFrame {
                 btnProveedoresActionPerformed(evt);
             }
         });
-        jPanel1.add(btnProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 170, -1));
+        pnlMenu.add(btnProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 170, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_logout_rounded_left_50px_1.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -183,9 +183,9 @@ public class DashBoard extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 531, -1, 60));
+        pnlMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 520, 50, 70));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 600));
+        getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 600));
 
         jPanel2.setBackground(new java.awt.Color(65, 165, 238));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -200,9 +200,14 @@ public class DashBoard extends javax.swing.JFrame {
         });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_menu_50px_1.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 48));
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_menu_50px_1.png"))); // NOI18N
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMenuMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 48));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/color-helper.png"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -360,6 +365,11 @@ public class DashBoard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void btnMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseClicked
+      
+      
+    }//GEN-LAST:event_btnMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -400,17 +410,17 @@ public class DashBoard extends javax.swing.JFrame {
     private rojerusan.RSButtonHover btnCompras;
     private rojerusan.RSButtonHover btnConsumo;
     private rojerusan.RSButtonHover btnInventario;
+    private javax.swing.JLabel btnMenu;
     private rojerusan.RSButtonHover btnProveedores;
     private rojerusan.RSButtonHover btnProyecto;
     private rojerusan.RSButtonHover btnReportes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel pnlMenu;
     private rojeru_san.efectos.Roboto roboto1;
     // End of variables declaration//GEN-END:variables
 }
