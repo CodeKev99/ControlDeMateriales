@@ -5,6 +5,11 @@
  */
 package vista;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kevin
@@ -32,6 +37,7 @@ public class PInventario extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnconectar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,6 +58,13 @@ public class PInventario extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("INVENTARIO");
 
+        btnconectar.setText("Prueva");
+        btnconectar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnconectarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -61,6 +74,8 @@ public class PInventario extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
+                .addComponent(btnconectar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -70,8 +85,10 @@ public class PInventario extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel2)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnconectar)
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -125,7 +142,6 @@ public class PInventario extends javax.swing.JPanel {
         jButton3.setBorder(null);
         jButton3.setFocusPainted(false);
 
-        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscar.setForeground(new java.awt.Color(51, 51, 51));
         txtBuscar.setText("BUSCAR");
         txtBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -207,8 +223,37 @@ public class PInventario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarMouseClicked
 
+    private void btnconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconectarActionPerformed
+        String bases="";
+     try {
+     Statement sql= Conexion.getConexion().createStatement();
+     
+     String consulta ="SELECT name FROM master.dbo.sysdatabases";
+     
+     ResultSet resultado = sql.executeQuery(consulta);
+     while(resultado.next()){
+     
+     bases += resultado.getString(1);
+     
+     }
+     JOptionPane.showMessageDialog(null, bases);
+     }
+     
+     catch(SQLException ex){
+     
+     JOptionPane.showMessageDialog(null, ex.toString());
+     }
+         
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnconectarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnconectar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
