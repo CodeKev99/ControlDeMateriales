@@ -7,7 +7,7 @@ package vista;
 
 
 import FiveCodMover.FiveCodMoverJFrame;
-import com.sun.awt.AWTUtilities;
+//import com.sun.awt.AWTUtilities;
 import java.awt.Shape;
 import java.awt.event.KeyEvent;
 import java.awt.geom.RoundRectangle2D;
@@ -31,7 +31,7 @@ public class Login extends javax.swing.JFrame {
         labelError.setVisible(false);
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
-        AWTUtilities.setWindowShape(this, forma);
+        //AWTUtilities.setWindowShape(this, forma);
         AWTUtilitie.setOpaque(this, false);
         FadeEffect.fadeInFrame(this, 50, 0.1f);
         
@@ -85,7 +85,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_delete_25px_1.png"))); // NOI18N
-        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExitMouseClicked(evt);
@@ -162,7 +162,7 @@ public class Login extends javax.swing.JFrame {
         btnIngresar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnIngresar.setBorderPainted(false);
         btnIngresar.setContentAreaFilled(false);
-        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIngresar.setFocusPainted(false);
         btnIngresar.setFocusable(false);
         btnIngresar.setRequestFocusEnabled(false);
