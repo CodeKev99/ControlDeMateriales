@@ -259,7 +259,7 @@ public class DashBoard extends javax.swing.JFrame {
             btnProveedores.setBackground(new java.awt.Color(33,45,62));
             
         }
-        
+         CambiaPanel cambiaPanel = new CambiaPanel(PanelPrincipal, new PnlReporte());
     }//GEN-LAST:event_btnReportesMouseClicked
 
     private void btnProyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProyectoMouseClicked
@@ -322,6 +322,7 @@ public class DashBoard extends javax.swing.JFrame {
             btnProveedores.setBackground(new java.awt.Color(33,45,62));
             
         }
+         CambiaPanel cambiaPanel = new CambiaPanel(PanelPrincipal, new PnlCompras());
     }//GEN-LAST:event_btnComprasMouseClicked
 
     private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
@@ -338,6 +339,7 @@ public class DashBoard extends javax.swing.JFrame {
             btnProyecto.setBackground(new java.awt.Color(33,45,62));
             
         }
+         CambiaPanel cambiaPanel = new CambiaPanel(PanelPrincipal, new PnlProveedores());
     }//GEN-LAST:event_btnProveedoresMouseClicked
 
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed

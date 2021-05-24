@@ -11,23 +11,25 @@ import java.sql.SQLException;
 
 /**
  *
- * @author prado
+ * @author Mauricio
  */
 public class Conexion {
-    public static Connection getConexion(){
+
+    public static Connection getConexion() {
         //el LAPTOP-OA9CQMC3\\SQLEXPRESSg es el de mi maquina uestes agrengen el de las suyas
-    String conexionUrl= "jdbc:sqlserver://LAPTOP-OA9CQMC3\\SQLEXPRESSg:1433;"
-    + "database=master;"
-    + "user=sa;"
-    + "password=1234;"
-    + "loginTimeout=30;";
-    try{
-    Connection con =DriverManager.getConnection(conexionUrl);
-    return con;
-    }catch(SQLException ex){
-    System.out.println(ex.toString());
-    return null;
+        //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        String conexionUrl = "jdbc:sqlserver://DESKTOP-3BJB00V\\SQLEXPRESS:1433;"
+                + "databaseName=proyectos;"
+                + "user=sa;"
+                + "password=1234;"
+                + "loginTimeout=30;";
+        try {
+            Connection con = DriverManager.getConnection(conexionUrl);
+            return con;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+        }
+
     }
-            
-            }
 }
