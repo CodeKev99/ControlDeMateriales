@@ -2,10 +2,14 @@ package vista;
 
 import FiveCodMover.FiveCodMoverJFrame;
 import controlador.CambiaPanel;
+import controlador.hash;
+import controlador.sqlUsuarios;
+import controlador.usuarios;
 //import com.sun.awt.AWTUtilities;
 import java.awt.Shape;
 import java.awt.event.KeyEvent;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import necesario.FadeEffect;
 import vista.Alertas.AWTUtilitie;
@@ -46,7 +50,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JPasswordField();
+        txtPassword = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
@@ -114,17 +118,17 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 270, 40));
 
-        txtpassword.setBackground(new java.awt.Color(33, 45, 62));
-        txtpassword.setFont(txtpassword.getFont().deriveFont(txtpassword.getFont().getSize()+7f));
-        txtpassword.setForeground(new java.awt.Color(65, 165, 238));
-        txtpassword.setBorder(null);
-        txtpassword.setCaretColor(new java.awt.Color(65, 165, 238));
-        txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPassword.setBackground(new java.awt.Color(33, 45, 62));
+        txtPassword.setFont(txtPassword.getFont().deriveFont(txtPassword.getFont().getSize()+7f));
+        txtPassword.setForeground(new java.awt.Color(65, 165, 238));
+        txtPassword.setBorder(null);
+        txtPassword.setCaretColor(new java.awt.Color(65, 165, 238));
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtpasswordKeyTyped(evt);
+                txtPasswordKeyTyped(evt);
             }
         });
-        jPanel1.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 270, 36));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 270, 36));
 
         jSeparator1.setBackground(new java.awt.Color(65, 165, 238));
         jSeparator1.setForeground(new java.awt.Color(65, 165, 238));
@@ -210,17 +214,17 @@ public class Login extends javax.swing.JFrame {
         FiveCodMoverJFrame.MousePressed(evt);
     }//GEN-LAST:event_jPanel1MousePressed
 
-    private void txtpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyTyped
+    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
         if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
             DashBoard D = new DashBoard();
             D.show();
             this.dispose();
         }
-    }//GEN-LAST:event_txtpasswordKeyTyped
+    }//GEN-LAST:event_txtPasswordKeyTyped
 
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
         if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
-            txtpassword.requestFocus();
+            txtPassword.requestFocus();
         }
     }//GEN-LAST:event_txtUsuarioKeyTyped
 
@@ -229,10 +233,30 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresarMouseClicked
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        DashBoard D = new DashBoard();
-        D.show();
-        this.dispose();
 
+        sqlUsuarios modSql = new sqlUsuarios();
+        usuarios mod = new usuarios();
+
+        String pass = new String(txtPassword.getPassword());
+
+        if (!txtUsuario.getText().equals("") && !pass.equals("")) {
+            String nuevoPass = hash.sha1(pass);
+            mod.setUsuario(txtUsuario.getText());
+            mod.setContrasena(nuevoPass);
+
+            if (modSql.login(mod)) {
+
+                DashBoard D = new DashBoard();
+                D.show();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe ingresar sus datos");
+
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnIngresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIngresarKeyTyped
@@ -243,7 +267,7 @@ public class Login extends javax.swing.JFrame {
         registro1 R = new registro1();
         R.show();
         this.dispose();
-        
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
@@ -296,7 +320,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelError;
+    public javax.swing.JPasswordField txtPassword;
     public javax.swing.JTextField txtUsuario;
-    public javax.swing.JPasswordField txtpassword;
     // End of variables declaration//GEN-END:variables
 }

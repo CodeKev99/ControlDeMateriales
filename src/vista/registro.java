@@ -31,7 +31,7 @@ public class registro extends javax.swing.JPanel {
      */
     public registro() {
         initComponents();
-       
+
     }
 
     private void limpiar() {
@@ -241,26 +241,45 @@ public class registro extends javax.swing.JPanel {
         String pass = new String(txtPassword.getPassword());
         String passCon = new String(txtConfirmaPassword.getPassword());
 
-        //Si el campo Password = ConfirmaPassword, registrar los datos de los txt en la bd 
-        if (pass.equals(passCon)) {
-            
-            String nuevoPass = hash.sha1(pass);
-            mod.setUsuario(txtUsuario.getText());
-            mod.setContrasena(nuevoPass);
-            mod.setNombre(txtNombre.getText());
-            mod.setCorreo(txtCorreo.getText());
-            mod.setId_tipo(1);
-            
-            if(modSql.registrar(mod)){
-                JOptionPane.showMessageDialog(null, "Registro Guardado");
-            }else{
-                JOptionPane.showMessageDialog(null, "Error al guardar");
-            }
-
+        //validaciones de jtextfield de registro
+        if (txtUsuario.getText().equals("") || pass.equals("") || passCon.equals("") || txtNombre.getText().equals("")
+                || txtCorreo.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los campos");
         } else {
-            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-        }
 
+            //Si el campo Password = ConfirmaPassword, registrar los datos de los txt en la bd 
+            if (pass.equals(passCon)) {
+
+                //validacion que no se exista en la bd usuarios duplicados
+                if (modSql.existeUsuario(txtUsuario.getText()) == 0) {
+
+                    if (modSql.esEmail(txtCorreo.getText())) {
+
+                        String nuevoPass = hash.sha1(pass);
+                        mod.setUsuario(txtUsuario.getText());
+                        mod.setContrasena(nuevoPass);
+                        mod.setNombre(txtNombre.getText());
+                        mod.setCorreo(txtCorreo.getText());
+                        mod.setId_tipo(1);
+
+                        if (modSql.registrar(mod)) {
+                            JOptionPane.showMessageDialog(null, "Registro Guardado");
+                            limpiar();
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error al guardar");
+
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El correo electronico no es valido");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+            }
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
