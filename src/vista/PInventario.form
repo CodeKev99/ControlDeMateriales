@@ -65,8 +65,6 @@
                                       <Component id="txtmas" min="-2" pref="113" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lname" min="-2" pref="234" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="conbox" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane2" min="-2" pref="482" max="-2" attributes="0"/>
                               </Group>
@@ -95,15 +93,20 @@
                                       <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtCompra" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="txtCantidad" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtVenta" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtprove" alignment="0" pref="127" max="32767" attributes="0"/>
-                                      <Component id="cbmedida" max="32767" attributes="0"/>
-                                      <Component id="cbtipo" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtCompra" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="txtCantidad" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtVenta" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="cbmedida" max="32767" attributes="0"/>
+                                              <Component id="cbtipo" pref="127" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="conbox" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
                               </Group>
@@ -155,7 +158,7 @@
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtprove" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="conbox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -193,7 +196,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtmas" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lname" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="conbox" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnEditar" min="-2" pref="30" max="-2" attributes="0"/>
@@ -421,8 +423,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtCantidad">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtprove">
-        </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -580,12 +580,7 @@
         <Component class="javax.swing.JComboBox" name="conbox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
