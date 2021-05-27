@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +29,7 @@ public class PInventario extends javax.swing.JPanel {
     public PInventario() {
         initComponents();
         cargarTabla();
+        cagarcombobox();
     }
 
     /**
@@ -72,6 +74,7 @@ public class PInventario extends javax.swing.JPanel {
         lname = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        conbox = new javax.swing.JComboBox<>();
 
         jToolBar1.setRollover(true);
 
@@ -229,6 +232,8 @@ public class PInventario extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_search_30px_3.png"))); // NOI18N
 
+        conbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -243,7 +248,9 @@ public class PInventario extends javax.swing.JPanel {
                                     .addGap(34, 34, 34)
                                     .addComponent(txtmas, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(conbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(124, 124, 124)
@@ -339,7 +346,8 @@ public class PInventario extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lname))
+                            .addComponent(lname)
+                            .addComponent(conbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -529,6 +537,37 @@ public class PInventario extends javax.swing.JPanel {
         txtCantidad.setText("");
         
     }
+    
+    private void cagarcombobox(){
+     
+        
+           DefaultComboBoxModel modeloBox = (DefaultComboBoxModel) conbox.getModel();
+        modeloBox.getSelectedItem();
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+      
+        try {
+            
+            Connection con;
+            con = Conexion.getConexion();
+            ps = con.prepareStatement("SELECT nombre FROM proveedor");
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            
+            while (rs.next()) {
+               
+          modeloBox.addElement(rs.getString(1));
+
+            }
+            
+            conbox.setModel(modeloBox);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+
+        }
+    
+    }
 
     private void cargarTabla()  {
 
@@ -587,6 +626,7 @@ public class PInventario extends javax.swing.JPanel {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbmedida;
     private javax.swing.JComboBox<String> cbtipo;
+    private javax.swing.JComboBox<String> conbox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
