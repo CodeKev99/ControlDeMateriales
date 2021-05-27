@@ -8,6 +8,7 @@ package vista.Alertas;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import vista.DashBoard;
 
 /**
  *
@@ -256,7 +257,9 @@ public class warnningCerrar extends javax.swing.JDialog {
     }
 
     private void Ubicar(int y) {
-        this.setLocation(650, y - 120);
+         this.setLocation(750, y - 10);
+
+       
     }
 
 }
