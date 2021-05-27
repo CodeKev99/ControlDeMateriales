@@ -28,11 +28,11 @@ public class Login extends javax.swing.JFrame {
 
         labelError.setVisible(false);
         setLocationRelativeTo(null);
-        Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
+        //Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         //AWTUtilities.setWindowShape(this, forma);
         AWTUtilitie.setOpaque(this, false);
         FadeEffect.fadeInFrame(this, 50, 0.1f);
-
+       
     }
 
     /**
@@ -111,6 +111,18 @@ public class Login extends javax.swing.JFrame {
         txtUsuario.setForeground(new java.awt.Color(65, 165, 238));
         txtUsuario.setBorder(null);
         txtUsuario.setCaretColor(new java.awt.Color(65, 165, 238));
+        txtUsuario.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                txtUsuarioCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuarioActionPerformed(evt);
+            }
+        });
         txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtUsuarioKeyTyped(evt);
@@ -123,6 +135,16 @@ public class Login extends javax.swing.JFrame {
         txtPassword.setForeground(new java.awt.Color(65, 165, 238));
         txtPassword.setBorder(null);
         txtPassword.setCaretColor(new java.awt.Color(65, 165, 238));
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordMouseClicked(evt);
+            }
+        });
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPasswordKeyTyped(evt);
@@ -216,16 +238,44 @@ public class Login extends javax.swing.JFrame {
 
     private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
         if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
-            DashBoard D = new DashBoard();
-            D.show();
-            this.dispose();
+            sqlUsuarios modSql = new sqlUsuarios();
+        usuarios mod = new usuarios();
+
+        String pass = new String(txtPassword.getPassword());
+
+        if (!txtUsuario.getText().equals("") && !pass.equals("")) {
+            String nuevoPass = hash.sha1(pass);
+            mod.setUsuario(txtUsuario.getText());
+            mod.setContrasena(nuevoPass);
+
+            if (modSql.login(mod)) {
+
+                DashBoard D = new DashBoard();
+                D.show();
+                this.dispose();
+            } else {
+//                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+                labelError.setVisible(true);
+                labelError.setText("Usuario o Contraseña incorrecto");
+
+            }
+        } else {
+//            JOptionPane.showMessageDialog(null, "Debe ingresar sus datos");
+             labelError.setVisible(true);
+             labelError.setText("Ingrese Usuario y Contraseña");
+        }
+        txtUsuario.setText("");
+        txtPassword.setText("");
+        txtUsuario.requestFocus();
         }
     }//GEN-LAST:event_txtPasswordKeyTyped
 
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
         if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
             txtPassword.requestFocus();
+            labelError.setVisible(false);
         }
+        
     }//GEN-LAST:event_txtUsuarioKeyTyped
 
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
@@ -250,13 +300,19 @@ public class Login extends javax.swing.JFrame {
                 D.show();
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Datos incorrectos");
-
+//                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+                    labelError.setVisible(true);
+                    labelError.setText("Usuario o Contraseña incorrecto");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Debe ingresar sus datos");
+//            JOptionPane.showMessageDialog(null, "Debe ingresar sus datos");
+             labelError.setVisible(true);
+             labelError.setText("Ingrese Usuario y Contraseña");
 
         }
+        txtUsuario.setText("");
+        txtPassword.setText("");
+        txtUsuario.requestFocus();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnIngresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIngresarKeyTyped
@@ -269,6 +325,22 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+         
+    }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void txtUsuarioCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtUsuarioCaretPositionChanged
+      labelError.setVisible(false);
+    }//GEN-LAST:event_txtUsuarioCaretPositionChanged
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+         labelError.setVisible(false);
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
+       labelError.setVisible(false);
+    }//GEN-LAST:event_txtPasswordMouseClicked
 
     /**
      * @param args the command line arguments
