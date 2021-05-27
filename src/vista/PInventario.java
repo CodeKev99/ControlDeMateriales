@@ -5,7 +5,8 @@
  */
 package vista;
 
-import modelo.conexion.Conexion;
+
+import controlador.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

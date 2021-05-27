@@ -1,16 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
-
 import FiveCodMover.FiveCodMoverJFrame;
+import controlador.CambiaPanel;
+import controlador.hash;
+import controlador.sqlUsuarios;
+import controlador.usuarios;
 //import com.sun.awt.AWTUtilities;
 import java.awt.Shape;
 import java.awt.event.KeyEvent;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import necesario.FadeEffect;
 import vista.Alertas.AWTUtilitie;
 
@@ -18,23 +18,21 @@ import vista.Alertas.AWTUtilitie;
  *
  * @author Kevin
  */
-
 public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    
     public Login() {
         initComponents();
-       
+
         labelError.setVisible(false);
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         //AWTUtilities.setWindowShape(this, forma);
         AWTUtilitie.setOpaque(this, false);
         FadeEffect.fadeInFrame(this, 50, 0.1f);
-        
+
     }
 
     /**
@@ -51,8 +49,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtcorreo = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JPasswordField();
+        txtUsuario = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
@@ -60,10 +58,10 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         labelError = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setUndecorated(true);
         setResizable(false);
@@ -108,29 +106,29 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setText("CONTRASEÑA");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
-        txtcorreo.setBackground(new java.awt.Color(33, 45, 62));
-        txtcorreo.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtcorreo.setForeground(new java.awt.Color(65, 165, 238));
-        txtcorreo.setBorder(null);
-        txtcorreo.setCaretColor(new java.awt.Color(65, 165, 238));
-        txtcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtUsuario.setBackground(new java.awt.Color(33, 45, 62));
+        txtUsuario.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(65, 165, 238));
+        txtUsuario.setBorder(null);
+        txtUsuario.setCaretColor(new java.awt.Color(65, 165, 238));
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtcorreoKeyTyped(evt);
+                txtUsuarioKeyTyped(evt);
             }
         });
-        jPanel1.add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 270, 40));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 270, 40));
 
-        txtpassword.setBackground(new java.awt.Color(33, 45, 62));
-        txtpassword.setFont(txtpassword.getFont().deriveFont(txtpassword.getFont().getSize()+7f));
-        txtpassword.setForeground(new java.awt.Color(65, 165, 238));
-        txtpassword.setBorder(null);
-        txtpassword.setCaretColor(new java.awt.Color(65, 165, 238));
-        txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPassword.setBackground(new java.awt.Color(33, 45, 62));
+        txtPassword.setFont(txtPassword.getFont().deriveFont(txtPassword.getFont().getSize()+7f));
+        txtPassword.setForeground(new java.awt.Color(65, 165, 238));
+        txtPassword.setBorder(null);
+        txtPassword.setCaretColor(new java.awt.Color(65, 165, 238));
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtpasswordKeyTyped(evt);
+                txtPasswordKeyTyped(evt);
             }
         });
-        jPanel1.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 270, 36));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 270, 36));
 
         jSeparator1.setBackground(new java.awt.Color(65, 165, 238));
         jSeparator1.setForeground(new java.awt.Color(65, 165, 238));
@@ -182,7 +180,18 @@ public class Login extends javax.swing.JFrame {
                 btnIngresarKeyTyped(evt);
             }
         });
-        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 200, 50));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 200, 50));
+
+        btnRegistrar.setBackground(new java.awt.Color(0, 204, 204));
+        btnRegistrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("REGISTRATE");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 180, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 400, 600));
 
@@ -191,49 +200,75 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
-    
-    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-       DashBoard D = new DashBoard();
-       D.show();
-       this.dispose();
 
-
-    }//GEN-LAST:event_btnIngresarMouseClicked
-
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-
-    }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
         System.exit(0);
     }//GEN-LAST:event_btnExitMouseClicked
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-       FiveCodMoverJFrame.MouseDraggedFrame(evt, this);
+        FiveCodMoverJFrame.MouseDraggedFrame(evt, this);
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-       FiveCodMoverJFrame.MousePressed(evt);
+        FiveCodMoverJFrame.MousePressed(evt);
     }//GEN-LAST:event_jPanel1MousePressed
 
-    private void btnIngresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIngresarKeyTyped
-       
-    }//GEN-LAST:event_btnIngresarKeyTyped
-
-    private void txtpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyTyped
-         if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
+    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
+        if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
             DashBoard D = new DashBoard();
             D.show();
             this.dispose();
         }
-    }//GEN-LAST:event_txtpasswordKeyTyped
+    }//GEN-LAST:event_txtPasswordKeyTyped
 
-    private void txtcorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcorreoKeyTyped
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
         if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
-            txtpassword.requestFocus();
+            txtPassword.requestFocus();
         }
-    }//GEN-LAST:event_txtcorreoKeyTyped
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarMouseClicked
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+
+        sqlUsuarios modSql = new sqlUsuarios();
+        usuarios mod = new usuarios();
+
+        String pass = new String(txtPassword.getPassword());
+
+        if (!txtUsuario.getText().equals("") && !pass.equals("")) {
+            String nuevoPass = hash.sha1(pass);
+            mod.setUsuario(txtUsuario.getText());
+            mod.setContrasena(nuevoPass);
+
+            if (modSql.login(mod)) {
+
+                DashBoard D = new DashBoard();
+                D.show();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe ingresar sus datos");
+
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnIngresarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIngresarKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarKeyTyped
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        registro1 R = new registro1();
+        R.show();
+        this.dispose();
+
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,6 +308,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
     private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnRegistrar;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -284,7 +320,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelError;
-    public javax.swing.JTextField txtcorreo;
-    public javax.swing.JPasswordField txtpassword;
+    public javax.swing.JPasswordField txtPassword;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

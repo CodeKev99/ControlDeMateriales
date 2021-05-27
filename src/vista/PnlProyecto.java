@@ -6,7 +6,8 @@
 package vista;
 
 
-import modelo.conexion.Conexion;
+
+import controlador.Conexion;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -100,6 +101,7 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_paste_30px_1.png"))); // NOI18N
 
+        txtBuscar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(51, 51, 51));
         txtBuscar.setText("BUSCAR");
         txtBuscar.setBorder(null);
