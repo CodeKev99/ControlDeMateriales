@@ -298,6 +298,7 @@ public class DashBoard extends javax.swing.JFrame {
             btnProveedores.setBackground(new java.awt.Color(33,45,62));
             
         }
+       CambiaPanel cambiaPanel = new CambiaPanel(PanelPrincipal, new PnlConsumo());
     }//GEN-LAST:event_btnConsumoMouseClicked
 
     private void btnConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsumoActionPerformed
