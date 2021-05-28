@@ -296,6 +296,7 @@ public class PnlCompras extends javax.swing.JPanel {
         
             String material = commaterial.getSelectedItem().toString();        
          int idma=0;
+         int Mcantidad=0;
         PreparedStatement pss;
         ResultSet rss;
         ResultSetMetaData rsmdd;
@@ -304,7 +305,7 @@ public class PnlCompras extends javax.swing.JPanel {
             
             Connection con;
             con = Conexion.getConexion();
-            pss = con.prepareStatement("SELECT idMaterial FROM materiales WHERE nombre=?");
+            pss = con.prepareStatement("SELECT idMaterial, cantidad FROM materiales WHERE nombre=?");
             pss.setString(1, material);
             rss = pss.executeQuery();
             rsmdd = rss.getMetaData();
@@ -312,7 +313,7 @@ public class PnlCompras extends javax.swing.JPanel {
                         while (rss.next()) {
                
             idma = rss.getInt(1);
-
+            Mcantidad = rss.getInt(2);
             }
         
               
@@ -360,7 +361,10 @@ public class PnlCompras extends javax.swing.JPanel {
         
 
         int cantidad = Integer.parseInt(txtcan.getText());
-
+        
+        
+        
+if(cantidad<= Mcantidad){
         try {
             Connection con = Conexion.getConexion();
             PreparedStatement ps = con.prepareStatement("INSERT INTO inventarioBodegas (idMaterial,idProyec,cantidad,fechapedido) VALUES (?,?,?,?)");
@@ -374,13 +378,44 @@ public class PnlCompras extends javax.swing.JPanel {
          
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
-        }        
+        }//fin try        
         
         
-        cargarTabla();
+        cargarTabla();//cargar tabla  
+        
+        //actualizar inventario materiales
+        
+       int actu =Mcantidad-cantidad;
+                     PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            
+            Connection con = Conexion.getConexion();
+            ps = con.prepareStatement("UPDATE materiales SET cantidad=? WHERE idMaterial=?");
+            ps.setInt(1, actu);
+            ps.setInt(2, idma);
+            ps.executeUpdate();
+          
+            cargarTabla();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+
+        }
+        
+        
+        //fin de actualizacion
         
         
         
+        
+        
+        
+        
+}else{
+    JOptionPane.showMessageDialog(null,"No secuenta con sufisiente material por el momento");
+}      
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
