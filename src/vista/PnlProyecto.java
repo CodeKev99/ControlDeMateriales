@@ -61,7 +61,6 @@ public class PnlProyecto extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        fechaIni = new newscomponents.RSDateChooser();
         txtdireccion = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         txtbodega = new javax.swing.JTextField();
@@ -73,7 +72,8 @@ public class PnlProyecto extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        fechafin = new newscomponents.RSDateChooser();
+        fechaIni = new rojeru_san.rsdate.RSDateChooser();
+        fechafin = new rojeru_san.rsdate.RSDateChooser();
 
         setPreferredSize(new java.awt.Dimension(860, 550));
 
@@ -196,11 +196,6 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fechaIni.setBgColor(new java.awt.Color(65, 165, 238));
-        fechaIni.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fechaIni.setFormatDate("dd/MM/yyy");
-        jPanel3.add(fechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 150, 40));
-
         txtdireccion.setBorder(null);
         jPanel3.add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 130, 30));
 
@@ -226,11 +221,11 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel8.setText("Fecha inicio");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("Fecha fin");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(65, 165, 238));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 130, 10));
@@ -244,11 +239,8 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         jSeparator3.setBackground(new java.awt.Color(65, 165, 238));
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 130, 10));
-
-        fechafin.setBgColor(new java.awt.Color(65, 165, 238));
-        fechafin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fechafin.setFormatDate("dd/MM/yyy");
-        jPanel3.add(fechafin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 150, 40));
+        jPanel3.add(fechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 160, -1));
+        jPanel3.add(fechafin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 160, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 260, 330));
 
@@ -336,8 +328,8 @@ public class PnlProyecto extends javax.swing.JPanel {
             ps.setInt(1, bodega);
             ps.setString(2, Nombre);
             ps.setString(3, direccion);
-            ps.setDate(4, new java.sql.Date(fechaIni.getDate().getYear(),fechaIni.getDate().getMonth(),fechaIni.getDate().getDay()));
-            ps.setDate(5, new java.sql.Date(fechafin.getDate().getYear(),fechafin.getDate().getMonth(),fechafin.getDate().getDay()));
+            ps.setDate(4, new java.sql.Date(fechaIni.getDatoFecha().getYear(),fechaIni.getDatoFecha().getMonth(),fechaIni.getDatoFecha().getDay()));
+            ps.setDate(5, new java.sql.Date(fechafin.getDatoFecha().getYear(),fechafin.getDatoFecha().getMonth(),fechafin.getDatoFecha().getDay()));
      
            
 
@@ -445,8 +437,8 @@ public class PnlProyecto extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private newscomponents.RSDateChooser fechaIni;
-    private newscomponents.RSDateChooser fechafin;
+    private rojeru_san.rsdate.RSDateChooser fechaIni;
+    private rojeru_san.rsdate.RSDateChooser fechafin;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
