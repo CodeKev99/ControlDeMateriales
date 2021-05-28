@@ -5,10 +5,16 @@
  */
 package vista;
 
+import controlador.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +27,7 @@ public class PnlConsumo extends javax.swing.JPanel {
      */
     public PnlConsumo() {
         initComponents();
+        cagarcombobox();
         
     }
 
@@ -35,21 +42,17 @@ public class PnlConsumo extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        tbcon = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        conbox = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(65, 165, 238));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_bar_chart_30px.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -60,22 +63,15 @@ public class PnlConsumo extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(70, 70, 70)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(622, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(22, 22, 22)
+                .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -92,39 +88,27 @@ public class PnlConsumo extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jButton1.setBackground(new java.awt.Color(51, 102, 255));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("HISTORICO PROVEEDORES");
-        jButton1.setBorder(null);
-        jButton1.setFocusPainted(false);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbcon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Material", "Cantidad", "Medida", "Precio u", "Total"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton3.setBackground(new java.awt.Color(51, 102, 255));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("HISTORICO COMPRAS");
-        jButton3.setBorder(null);
-        jButton3.setFocusPainted(false);
+        jScrollPane1.setViewportView(tbcon);
 
         jButton2.setBackground(new java.awt.Color(51, 102, 255));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("HISTORICO PROYECTOS");
+        jButton2.setText("Consultar");
         jButton2.setBorder(null);
         jButton2.setFocusPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,12 +120,10 @@ public class PnlConsumo extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addComponent(conbox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -152,9 +134,8 @@ public class PnlConsumo extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -172,17 +153,117 @@ public class PnlConsumo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      
+        
+cargarTabla();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    private void cagarcombobox(){
+     
+        
+           DefaultComboBoxModel modeloBox = (DefaultComboBoxModel) conbox.getModel();
+        modeloBox.getSelectedItem();
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+      
+        try {
+            
+            Connection con;
+            con = Conexion.getConexion();
+            ps = con.prepareStatement("SELECT nombre FROM proyec");
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            
+            while (rs.next()) {
+               
+          modeloBox.addElement(rs.getString(1));
+
+            }
+            
+            conbox.setModel(modeloBox);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+
+        }
+    
+    }
+    
+        private void cargarTabla()  {
+String proyecto = conbox.getSelectedItem().toString();        
+         int bodega=0;
+        PreparedStatement psss;
+        ResultSet rsss;
+        ResultSetMetaData rsmddd;
+      
+        try {
+            
+            Connection con;
+            con = Conexion.getConexion();
+            psss = con.prepareStatement("SELECT Nbodega FROM proyec WHERE nombre=?");
+            psss.setString(1, proyecto);
+            rsss = psss.executeQuery();
+            rsmddd = rsss.getMetaData();
+            
+                        while (rsss.next()) {
+               
+            bodega = rsss.getInt(1);
+
+            }
+        
+              
+            
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+
+        }
+        DefaultTableModel modeloTabla = (DefaultTableModel) tbcon.getModel();
+        modeloTabla.setRowCount(0);
+        PreparedStatement ps;
+        ResultSet rs;
+        ResultSetMetaData rsmd;
+        int columnas;
+        
+        
+        int[] ancho = {20, 20, 20, 20, 20};
+        for (int i = 0; i < tbcon.getColumnCount(); i++) {
+            tbcon.getColumnModel().getColumn(i).setPreferredWidth(ancho[i]);
+        }
+        try {
+            Connection con = Conexion.getConexion();
+            ps = con.prepareStatement("SELECT m.nombre AS material, SUM(i.cantidad) AS Cantidad,m.medida,m.precioVenta, SUM(i.cantidad*m.precioVenta) AS TotalP FROM materiales m JOIN inventarioBodegas i ON m.idMaterial=i.idMaterial JOIN proyec p ON i.idProyec=p.idProyec WHERE p.Nbodega=? GROUP BY m.nombre,m.medida, i.cantidad, m.precioVenta ORDER BY 2,1;");
+            ps.setInt(1, bodega);
+            rs = ps.executeQuery();
+            rsmd = rs.getMetaData();
+            columnas = rsmd.getColumnCount();
+            while (rs.next()) {
+                Object[] fila = new Object[columnas];
+                for (int indice = 0; indice < columnas; indice++) {
+                    fila[indice] = rs.getObject(indice + 1);
+                    
+              
+                    
+                }
+                modeloTabla.addRow(fila);
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+
+        }
+
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> conbox;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbcon;
     // End of variables declaration//GEN-END:variables
 }
