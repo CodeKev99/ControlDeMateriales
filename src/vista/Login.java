@@ -83,7 +83,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_delete_25px_1.png"))); // NOI18N
-        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExitMouseClicked(evt);
@@ -208,6 +208,7 @@ public class Login extends javax.swing.JFrame {
         btnRegistrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("REGISTRATE");
+        btnRegistrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(65, 165, 238)));
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -271,9 +272,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordKeyTyped
 
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+       labelError.setVisible(false);
         if ((evt.getKeyChar() == KeyEvent.VK_ENTER)) {
             txtPassword.requestFocus();
-            labelError.setVisible(false);
+            
         }
         
     }//GEN-LAST:event_txtUsuarioKeyTyped
