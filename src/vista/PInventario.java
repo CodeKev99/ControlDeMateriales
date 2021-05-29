@@ -30,8 +30,24 @@ public class PInventario extends javax.swing.JPanel {
         initComponents();
         cargarTabla();
         cagarcombobox();
+        btnEditar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+         btnGuardar.setEnabled(false);
     }
+public void validar(){
 
+
+if(txtNombre.getText().isEmpty() || txtVenta.getText().isEmpty() || txtCantidad.getText().isEmpty() ){
+
+l2.setText("Llene todos los campos");
+btnGuardar.setEnabled(false);
+}else{
+btnGuardar.setEnabled(true);
+l2.setText("");
+}
+
+
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,6 +88,7 @@ public class PInventario extends javax.swing.JPanel {
         txtBuscar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         conbox = new javax.swing.JComboBox<>();
+        l2 = new javax.swing.JLabel();
 
         jToolBar1.setRollover(true);
 
@@ -182,7 +199,31 @@ public class PInventario extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Agregar Nuevo Material");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
+            }
+        });
+
+        txtVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtVentaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtVentaKeyTyped(evt);
+            }
+        });
+
         jLabel11.setText("Cantidad");
+
+        txtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCantidadKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadKeyTyped(evt);
+            }
+        });
 
         tbmaterial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,6 +249,12 @@ public class PInventario extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Agregar materiales a inventario");
 
+        txtmas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtmasKeyTyped(evt);
+            }
+        });
+
         lname.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lname.setForeground(new java.awt.Color(153, 0, 0));
         lname.setText(":");
@@ -226,6 +273,8 @@ public class PInventario extends javax.swing.JPanel {
         });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_search_30px_3.png"))); // NOI18N
+
+        l2.setForeground(new java.awt.Color(204, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -286,7 +335,10 @@ public class PInventario extends javax.swing.JPanel {
                                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(l2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -342,7 +394,9 @@ public class PInventario extends javax.swing.JPanel {
                             .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
                         .addGap(18, 18, 18)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(l2)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -364,26 +418,9 @@ public class PInventario extends javax.swing.JPanel {
             int fila =tbmaterial.getSelectedRow();
             String name= tbmaterial.getValueAt(fila, 2).toString();
      lname.setText("unidades de "+name);
-        /*  try{
-
-            int fila =tbmaterial.getSelectedRow();
-            int id = Integer.parseInt(tbmaterial.getValueAt(fila, 0).toString());
-
-            Connection con =Conexion.getConexion();
-            PreparedStatement ps;
-            ResultSet rs;
-            ps = con.prepareStatement("SELECT idProve,nombre,tipo,medida,cantidad,precioCompra,PrecioVenta FROM materiales WHERE idMaterial=?");
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-            while(rs.next()){
-
-                txt
-
-            }
-
-        }catch(){}
-
-        */
+     btnEditar.setEnabled(true);
+     btnEliminar.setEnabled(true);
+      
     }//GEN-LAST:event_tbmaterialMouseClicked
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
@@ -432,6 +469,7 @@ public class PInventario extends javax.swing.JPanel {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
+       
             String Proveedor = conbox.getSelectedItem().toString();        
          int id=0;
         PreparedStatement pss;
@@ -452,31 +490,48 @@ public class PInventario extends javax.swing.JPanel {
             id = rss.getInt(1);
 
             }
+      
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+
+        }
+        String Nombre = txtNombre.getText();
+        String Tipo = cbtipo.getSelectedItem().toString();
+
+        String medida = cbmedida.getSelectedItem().toString();
         
-              
+        Double precio = Double.parseDouble(txtVenta.getText());
+        int cantidad = Integer.parseInt(txtCantidad.getText());
+        
+        
+                           
+         int bl=0;
+        PreparedStatement psss;
+        ResultSet rsss;
+        ResultSetMetaData rsmddd;
+      
+        try {
             
+            Connection con;
+            con = Conexion.getConexion();
+            psss = con.prepareStatement("SELECT idMaterial FROM materiales WHERE nombre=?");
+            psss.setString(1, Nombre);
+            rsss = psss.executeQuery();
+            rsmdd = rsss.getMetaData();
             
+                        while (rsss.next()) {
+               
+            bl = rsss.getInt(1);
+
+            }
+       
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
 
         }
         
         
-        
-        
-        
-        
-        
-        String Nombre = txtNombre.getText();
-        String Tipo = cbtipo.getSelectedItem().toString();
-
-       
-       
-        String medida = cbmedida.getSelectedItem().toString();
-        
-        Double precio = Double.parseDouble(txtVenta.getText());
-        int cantidad = Integer.parseInt(txtCantidad.getText());
-
+ if(bl==0){
         try {
             Connection con = Conexion.getConexion();
             PreparedStatement ps = con.prepareStatement("INSERT INTO materiales (idProve,nombre,tipo,medida,cantidad,precio) VALUES (?,?,?,?,?,?)");
@@ -496,9 +551,22 @@ public class PInventario extends javax.swing.JPanel {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
         }
-
+        }else{
+ 
+ JOptionPane.showMessageDialog(null, "El registro ya existe");
+ }
+ 
+ 
+ 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    
+    
+    
+    
+    
+    
+    
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
         PreparedStatement ps;
@@ -522,6 +590,9 @@ public class PInventario extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+
+    
+    
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
              PreparedStatement ps;
         ResultSet rs;
@@ -549,6 +620,45 @@ public class PInventario extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        validar();
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtVentaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVentaKeyReleased
+       validar();
+    }//GEN-LAST:event_txtVentaKeyReleased
+
+    private void txtCantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyReleased
+       validar();
+    }//GEN-LAST:event_txtCantidadKeyReleased
+
+    private void txtmasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmasKeyTyped
+        
+              char c =evt.getKeyChar(); 
+        if(c<'0' || c>'9' ) evt.consume();
+                                       
+
+        
+    }//GEN-LAST:event_txtmasKeyTyped
+
+    private void txtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyTyped
+               char c =evt.getKeyChar(); 
+        if(c<'0' || c>'9' ) evt.consume();
+    }//GEN-LAST:event_txtCantidadKeyTyped
+
+    private void txtVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVentaKeyTyped
+        
+       if(! Character.isDigit(evt.getKeyChar()) && evt.getKeyChar() !='.'){
+       evt.consume();
+       } 
+        
+        if(evt.getKeyChar()=='.'&&txtVenta.getText().contains(".")){
+         evt.consume();
+        }
+        
+        
+    }//GEN-LAST:event_txtVentaKeyTyped
 
 
     private void limpiar() {
@@ -668,6 +778,7 @@ public class PInventario extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JLabel l2;
     private javax.swing.JLabel lname;
     private javax.swing.JTable tbmaterial;
     private javax.swing.JTextField txtBuscar;
