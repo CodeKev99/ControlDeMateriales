@@ -96,7 +96,7 @@ public class PnlCompras extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -129,10 +129,13 @@ public class PnlCompras extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Producto", "Fecha_pedido", "Cantidad", "Monto x Producto"
+                "ID", "Producto", "Fecha_pedido", "Cantidad", "Monto x Producto"
             }
         ));
         jScrollPane1.setViewportView(tbcompra);
+        if (tbcompra.getColumnModel().getColumnCount() > 0) {
+            tbcompra.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         jButton3.setBackground(new java.awt.Color(65, 165, 238));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
@@ -268,9 +271,9 @@ public class PnlCompras extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(l2)
-                .addGap(23, 23, 23))
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -440,7 +443,7 @@ if(cantidad<= Mcantidad){
 public void validar(){
 
 
-if(txtcan.getText().isEmpty() ){
+if(txtcan.getText().isEmpty()){
 
 l2.setText("Llene todos los campos");
 jButton3.setEnabled(false);
@@ -457,7 +460,28 @@ l2.setText("");
     }//GEN-LAST:event_txtcanKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
+        PreparedStatement ps;
+        ResultSet rs;
+        int id=0;
+            int fila = tbcompra.getSelectedRow();
+             id = Integer.parseInt(tbcompra.getValueAt(fila, 0).toString());
+            
+            
+            
+
+        try {
+
+            Connection con = Conexion.getConexion();
+            ps = con.prepareStatement("DELETE FROM Bodegas WHERE idInventario=?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            cargarTabla();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+
+        }      
         
 
         
@@ -564,13 +588,13 @@ String proyecto = comproyecto.getSelectedItem().toString();
         int columnas;
         
         
-        int[] ancho = {10, 10, 20, 20};
+        int[] ancho = {10, 10, 20, 20,20};
         for (int i = 0; i < tbcompra.getColumnCount(); i++) {
             tbcompra.getColumnModel().getColumn(i).setPreferredWidth(ancho[i]);
         }
         try {
             Connection con = Conexion.getConexion();
-            ps = con.prepareStatement("SELECT m.nombre AS material, i.fechapedido, SUM(i.cantidad) AS Cantidad, SUM(i.cantidad*m.precio) AS TotalP FROM materiales m JOIN Bodegas i ON m.idMaterial=i.idMaterial JOIN proyec p ON i.idProyec=p.idProyec WHERE p.Nbodega=? GROUP BY i.fechapedido, i.cantidad, m.nombre ORDER BY 2,1;");
+            ps = con.prepareStatement("SELECT i.idInventario AS id, m.nombre AS material, i.fechapedido, SUM(i.cantidad) AS Cantidad, SUM(i.cantidad*m.precio) AS TotalP FROM materiales m JOIN Bodegas i ON m.idMaterial=i.idMaterial JOIN proyec p ON i.idProyec=p.idProyec WHERE p.Nbodega=? GROUP BY i.idInventario, i.fechapedido, i.cantidad, m.nombre ORDER BY 2,1;");
             ps.setInt(1, bodega);
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
