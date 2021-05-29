@@ -120,8 +120,8 @@ public class PnlConsumo extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(conbox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(conbox, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -154,9 +154,8 @@ public class PnlConsumo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
-        
-cargarTabla();
+
+        cargarTabla();
     }//GEN-LAST:event_jButton2ActionPerformed
     private void cagarcombobox(){
      
@@ -232,7 +231,7 @@ String proyecto = conbox.getSelectedItem().toString();
         }
         try {
             Connection con = Conexion.getConexion();
-            ps = con.prepareStatement("SELECT m.nombre AS material, SUM(i.cantidad) AS Cantidad,m.medida,m.precioVenta, SUM(i.cantidad*m.precioVenta) AS TotalP FROM materiales m JOIN inventarioBodegas i ON m.idMaterial=i.idMaterial JOIN proyec p ON i.idProyec=p.idProyec WHERE p.Nbodega=? GROUP BY m.nombre,m.medida, i.cantidad, m.precioVenta ORDER BY 2,1;");
+            ps = con.prepareStatement("SELECT m.nombre AS material, SUM(i.cantidad) AS Cantidad,m.medida,m.precio, SUM(i.cantidad*m.precio) AS TotalP FROM materiales m JOIN Bodegas i ON m.idMaterial=i.idMaterial JOIN proyec p ON i.idProyec=p.idProyec WHERE p.Nbodega=? GROUP BY m.nombre,m.medida, i.cantidad, m.precio ORDER BY 2,1;");
             ps.setInt(1, bodega);
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();

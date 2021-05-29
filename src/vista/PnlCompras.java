@@ -367,7 +367,7 @@ public class PnlCompras extends javax.swing.JPanel {
 if(cantidad<= Mcantidad){
         try {
             Connection con = Conexion.getConexion();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO inventarioBodegas (idMaterial,idProyec,cantidad,fechapedido) VALUES (?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO Bodegas (idMaterial,idProyec,cantidad,fechapedido) VALUES (?,?,?,?)");
             ps.setInt(1, idma);
             ps.setInt(2, idpr);
             ps.setInt(3, cantidad);
@@ -523,7 +523,7 @@ String proyecto = comproyecto.getSelectedItem().toString();
         }
         try {
             Connection con = Conexion.getConexion();
-            ps = con.prepareStatement("SELECT m.nombre AS material, i.fechapedido, SUM(i.cantidad) AS Cantidad, SUM(i.cantidad*m.precioVenta) AS TotalP FROM materiales m JOIN inventarioBodegas i ON m.idMaterial=i.idMaterial JOIN proyec p ON i.idProyec=p.idProyec WHERE p.Nbodega=? GROUP BY i.fechapedido, i.cantidad, m.nombre ORDER BY 2,1;");
+            ps = con.prepareStatement("SELECT m.nombre AS material, i.fechapedido, SUM(i.cantidad) AS Cantidad, SUM(i.cantidad*m.precio) AS TotalP FROM materiales m JOIN Bodegas i ON m.idMaterial=i.idMaterial JOIN proyec p ON i.idProyec=p.idProyec WHERE p.Nbodega=? GROUP BY i.fechapedido, i.cantidad, m.nombre ORDER BY 2,1;");
             ps.setInt(1, bodega);
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();

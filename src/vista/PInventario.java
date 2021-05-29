@@ -54,12 +54,10 @@ public class PInventario extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtCompra = new javax.swing.JTextField();
         txtVenta = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
@@ -177,9 +175,7 @@ public class PInventario extends javax.swing.JPanel {
 
         jLabel6.setText("Medida");
 
-        jLabel7.setText("Precio compra");
-
-        jLabel8.setText("Precio venta");
+        jLabel8.setText("Precio ");
 
         jLabel9.setText("id Proveedor");
 
@@ -193,7 +189,7 @@ public class PInventario extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Proveedor", "Nombre", "Tipo", "Medida", "Cantidad", "PCompra", "PVenta"
+                "ID", "Proveedor", "Nombre", "Tipo", "Medida", "Cantidad", "Precio"
             }
         ));
         tbmaterial.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -262,17 +258,15 @@ public class PInventario extends javax.swing.JPanel {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
+                                .addGap(24, 24, 24)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtNombre)
-                                            .addComponent(txtCompra, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(txtCantidad)
                                             .addComponent(txtVenta)
                                             .addComponent(cbmedida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -324,18 +318,14 @@ public class PInventario extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(cbtipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(cbmedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(txtVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,9 +338,9 @@ public class PInventario extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11)
-                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
                         .addGap(18, 18, 18)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(53, Short.MAX_VALUE))
@@ -404,7 +394,7 @@ public class PInventario extends javax.swing.JPanel {
         ResultSet rs;
         ResultSetMetaData rsmd;
         int columnas;
-        int[] ancho = {5, 5, 20, 20, 20, 20, 20, 20};
+        int[] ancho = {5, 5, 20, 20, 20, 20, 20};
         for (int i = 0; i < tbmaterial.getColumnCount(); i++) {
             tbmaterial.getColumnModel().getColumn(i).setPreferredWidth(ancho[i]);
         }
@@ -412,7 +402,7 @@ public class PInventario extends javax.swing.JPanel {
             int id = Integer.parseInt(txtBuscar.getText());
             Connection con;
             con = Conexion.getConexion();
-            ps = con.prepareStatement("SELECT idMaterial,idProve,nombre,tipo,medida,cantidad,precioCompra,PrecioVenta FROM materiales WHERE idMaterial=?");
+            ps = con.prepareStatement("SELECT idMaterial,idProve,nombre,tipo,medida,cantidad,Precio FROM materiales WHERE idMaterial=?");
             ps.setInt(1, id);
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
@@ -483,20 +473,20 @@ public class PInventario extends javax.swing.JPanel {
        
        
         String medida = cbmedida.getSelectedItem().toString();
-        Double compra = Double.parseDouble(txtCompra.getText());
-        Double venta = Double.parseDouble(txtVenta.getText());
+        
+        Double precio = Double.parseDouble(txtVenta.getText());
         int cantidad = Integer.parseInt(txtCantidad.getText());
 
         try {
             Connection con = Conexion.getConexion();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO materiales (idProve,nombre,tipo,medida,cantidad,precioCompra,PrecioVenta) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO materiales (idProve,nombre,tipo,medida,cantidad,precio) VALUES (?,?,?,?,?,?)");
             ps.setInt(1, id);
             ps.setString(2, Nombre);
             ps.setString(3, Tipo);
             ps.setString(4, medida);
             ps.setInt(5, cantidad);
-            ps.setDouble(6, compra);
-            ps.setDouble(7, venta);
+            ps.setDouble(6, precio);
+            
 
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Registro guardado");
@@ -565,7 +555,7 @@ public class PInventario extends javax.swing.JPanel {
 
         txtNombre.setText("");
        
-        txtCompra.setText("");
+       
         txtVenta.setText("");
         txtCantidad.setText("");
         
@@ -611,13 +601,13 @@ public class PInventario extends javax.swing.JPanel {
         ResultSetMetaData rsmd;
         int columnas;
         String name="";
-        int[] ancho = {5, 5, 20, 20, 20, 20, 20, 20};
+        int[] ancho = {5, 5, 20, 20, 20, 20, 20};
         for (int i = 0; i < tbmaterial.getColumnCount(); i++) {
             tbmaterial.getColumnModel().getColumn(i).setPreferredWidth(ancho[i]);
         }
         try {
             Connection con = Conexion.getConexion();
-            ps = con.prepareStatement("SELECT idMaterial,idProve,nombre,tipo,medida,cantidad,precioCompra,PrecioVenta FROM materiales");
+            ps = con.prepareStatement("SELECT idMaterial,idProve,nombre,tipo,medida,cantidad,precio FROM materiales");
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
@@ -669,7 +659,6 @@ public class PInventario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -683,7 +672,6 @@ public class PInventario extends javax.swing.JPanel {
     private javax.swing.JTable tbmaterial;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtCompra;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtVenta;
     private javax.swing.JTextField txtmas;
