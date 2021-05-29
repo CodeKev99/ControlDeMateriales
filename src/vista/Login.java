@@ -204,7 +204,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 200, 50));
 
-        btnRegistrar.setBackground(new java.awt.Color(0, 204, 204));
+        btnRegistrar.setBackground(new java.awt.Color(33, 45, 62));
         btnRegistrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("REGISTRATE");

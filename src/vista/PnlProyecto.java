@@ -8,6 +8,7 @@ package vista;
 
 
 import controlador.Conexion;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -22,6 +23,9 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import vista.Alertas.Cerrar;
+import vista.Alertas.Succes;
+import vista.Alertas.errror;
 
 
 /**
@@ -35,7 +39,13 @@ public class PnlProyecto extends javax.swing.JPanel {
      */
     public PnlProyecto() {
         initComponents();
+        erNombre.setVisible(false);
+        erBodega.setVisible(false);
+        erDirec.setVisible(false);
+        
         cargarTabla();
+        
+        
         
     }
 
@@ -74,6 +84,9 @@ public class PnlProyecto extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         fechaIni = new rojeru_san.rsdate.RSDateChooser();
         fechafin = new rojeru_san.rsdate.RSDateChooser();
+        erBodega = new javax.swing.JLabel();
+        erNombre = new javax.swing.JLabel();
+        erDirec = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(860, 550));
 
@@ -174,7 +187,7 @@ public class PnlProyecto extends javax.swing.JPanel {
         jButton1.setText("EDITAR");
         jButton1.setBorder(null);
         jButton1.setFocusPainted(false);
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 129, 33));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 129, 33));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Agregar nuevo proyecto");
@@ -196,17 +209,56 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtdireccion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtdireccion.setBorder(null);
+        txtdireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtdireccionMouseClicked(evt);
+            }
+        });
+        txtdireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtdireccionKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 130, 30));
 
         txtnombre.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtnombre.setBorder(null);
+        txtnombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtnombreMouseClicked(evt);
+            }
+        });
+        txtnombre.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                txtnombreCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombreKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 130, 30));
 
+        txtbodega.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtbodega.setBorder(null);
+        txtbodega.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtbodegaMouseClicked(evt);
+            }
+        });
         txtbodega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtbodegaActionPerformed(evt);
+            }
+        });
+        txtbodega.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbodegaKeyTyped(evt);
             }
         });
         jPanel3.add(txtbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 130, 30));
@@ -239,8 +291,41 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         jSeparator3.setBackground(new java.awt.Color(65, 165, 238));
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 130, 10));
+
+        fechaIni.setColorBackground(new java.awt.Color(65, 165, 238));
+        fechaIni.setColorForeground(new java.awt.Color(0, 0, 0));
+        fechaIni.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
+        fechaIni.setFormatoFecha("dd/MM/yyyy");
+        fechaIni.setFuente(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        fechaIni.setPlaceholder("Seleccionar Fecha");
+        fechaIni.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fechaIniMouseClicked(evt);
+            }
+        });
         jPanel3.add(fechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 160, -1));
+
+        fechafin.setColorBackground(new java.awt.Color(65, 165, 238));
+        fechafin.setColorForeground(new java.awt.Color(0, 0, 0));
+        fechafin.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
+        fechafin.setFormatoFecha("dd/MM/yyyy");
+        fechafin.setFuente(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        fechafin.setPlaceholder("Seleccionar Fecha");
+        fechafin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fechafinMouseClicked(evt);
+            }
+        });
         jPanel3.add(fechafin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 160, -1));
+
+        erBodega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_high_priority_20px.png"))); // NOI18N
+        jPanel3.add(erBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 20, 30));
+
+        erNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_high_priority_20px.png"))); // NOI18N
+        jPanel3.add(erNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 20, 30));
+
+        erDirec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_high_priority_20px.png"))); // NOI18N
+        jPanel3.add(erDirec, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 20, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 260, 330));
 
@@ -312,17 +397,45 @@ public class PnlProyecto extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        
-       
-         String Nombre = txtnombre.getText();
+        
+            String Nombre = txtnombre.getText();
         
 
-        int bodega = Integer.parseInt(txtbodega.getText());
-        String direccion = txtdireccion.getText();
+            
+            String direccion = txtdireccion.getText();
         
-        
-
-       
-        try {
+  try {
+            if(txtnombre.getText().isEmpty()){
+                erNombre.setVisible(true);
+                txtnombre.requestFocus();
+                
+            }
+            if(txtbodega.getText().isEmpty()){
+                erBodega.setVisible(true);
+                txtbodega.requestFocus();
+            }
+            if(txtdireccion.getText().isEmpty()){
+                erDirec.setVisible(true);
+                txtdireccion.requestFocus();
+            }
+            if(txtnombre.getText().isEmpty() || txtbodega.getText().isEmpty() || txtdireccion.getText().isEmpty() || fechaIni.getDatoFecha() == null || fechafin.getDatoFecha() == null){
+                errror r = new errror(new DashBoard(), true);
+                r.titulo.setText("OOPS...");
+                r.msj.setText("Te hacen falta campos por llenar");
+                r.msj1.setText("");
+                r.setVisible(true);
+                txtnombre.requestFocus();
+            }
+            else{
+//                Cerrar c = new Cerrar();
+//                c.titulo.setText("OOPS...");
+//                c.msj.setText("Te hacen falta campos por llenar");
+//                c.msj1.setText("");
+//                c.setVisible(true);
+//                  JOptionPane.showMessageDialog(null, "Campos vacios");
+//                    erNombre.setVisible(true);
+             int bodega = Integer.parseInt(txtbodega.getText());
+             
             Connection con = Conexion.getConexion();
             PreparedStatement ps = con.prepareStatement("INSERT INTO proyec (Nbodega,nombre,direccion,fechaInicio,fechaFin) VALUES (?,?,?,?,?)");
             ps.setInt(1, bodega);
@@ -334,14 +447,25 @@ public class PnlProyecto extends javax.swing.JPanel {
            
 
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Registro guardado");
+            ///JOptionPane.showMessageDialog(null, "Registro guardado");
+            Succes s = new Succes(new DashBoard(), true );
+            s.titulo.setText("Éxito");
+            s.msj.setText("Proyecto agregado");
+            s.msj1.setText("");
+            s.setVisible(true);
+            
 
             //limpiar();
                 txtnombre.setText("");
                 txtbodega.setText("");
                 txtdireccion.setText("");
+                fechaIni.setPlaceholder("Selecionar Fecha");
+                fechafin.setPlaceholder("Selecionar Fecha");
                 
             cargarTabla();
+                    
+            }
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
         }
@@ -352,11 +476,7 @@ public class PnlProyecto extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
-        private void nombre(){
-        String Nombre;
         
-        
-        }
     
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -391,6 +511,44 @@ public class PnlProyecto extends javax.swing.JPanel {
     private void txtbodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbodegaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtbodegaActionPerformed
+
+    private void txtnombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtnombreMouseClicked
+        erNombre.setVisible(false);
+    }//GEN-LAST:event_txtnombreMouseClicked
+
+    private void txtbodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbodegaMouseClicked
+        erBodega.setVisible(false);
+    }//GEN-LAST:event_txtbodegaMouseClicked
+
+    private void txtdireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtdireccionMouseClicked
+        erDirec.setVisible(false);
+    }//GEN-LAST:event_txtdireccionMouseClicked
+
+    private void txtnombreCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtnombreCaretPositionChanged
+       
+    }//GEN-LAST:event_txtnombreCaretPositionChanged
+
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
+        
+            erNombre.setVisible(false);
+        
+    }//GEN-LAST:event_txtnombreKeyTyped
+
+    private void txtbodegaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbodegaKeyTyped
+         erBodega.setVisible(false);
+    }//GEN-LAST:event_txtbodegaKeyTyped
+
+    private void txtdireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyTyped
+        erDirec.setVisible(false);
+    }//GEN-LAST:event_txtdireccionKeyTyped
+
+    private void fechaIniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechaIniMouseClicked
+        
+    }//GEN-LAST:event_fechaIniMouseClicked
+
+    private void fechafinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechafinMouseClicked
+       
+    }//GEN-LAST:event_fechafinMouseClicked
 
         private void cargarTabla()  {
 
@@ -437,6 +595,9 @@ public class PnlProyecto extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel erBodega;
+    private javax.swing.JLabel erDirec;
+    private javax.swing.JLabel erNombre;
     private rojeru_san.rsdate.RSDateChooser fechaIni;
     private rojeru_san.rsdate.RSDateChooser fechafin;
     private javax.swing.JButton jButton1;
@@ -462,6 +623,6 @@ public class PnlProyecto extends javax.swing.JPanel {
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtbodega;
     private javax.swing.JTextField txtdireccion;
-    private javax.swing.JTextField txtnombre;
+    public javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }

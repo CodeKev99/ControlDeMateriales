@@ -8,6 +8,7 @@ package vista;
 import controlador.CambiaPanel;
 import FiveCodMover.FiveCodMoverJFrame;
 import necesario.FadeEffect;
+import vista.Alertas.Cerrar;
 import vista.Alertas.warnningCerrar;
 
 
@@ -219,7 +220,7 @@ public class DashBoard extends javax.swing.JFrame {
         jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 48));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/color-helper.png"))); // NOI18N
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -228,7 +229,7 @@ public class DashBoard extends javax.swing.JFrame {
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 30, 40));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_delete_35px_4.png"))); // NOI18N
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -357,7 +358,13 @@ public class DashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProveedoresActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        System.exit(0);
+        Cerrar c = new Cerrar(this, true);
+        c.titulo.setText("¿ESTAS SEGURO?");
+        c.msj.setText("SE CERRARA LA APLICACIÓN");
+        c.msj1.setText("");
+        c.setVisible(true);
+        
+        
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
