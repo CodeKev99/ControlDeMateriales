@@ -29,6 +29,7 @@ public class PnlCompras extends javax.swing.JPanel {
         initComponents();
         cagarcombobox();
         cagarcombobox2();
+        jButton3.setEnabled(false);
     }
 
     /**
@@ -45,7 +46,6 @@ public class PnlCompras extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbcompra = new javax.swing.JTable();
@@ -61,6 +61,7 @@ public class PnlCompras extends javax.swing.JPanel {
         txtcan = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         datepedido = new rojeru_san.rsdate.RSDateChooser();
+        l2 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -80,14 +81,11 @@ public class PnlCompras extends javax.swing.JPanel {
         jButton2.setText("ELIMINAR");
         jButton2.setBorder(null);
         jButton2.setFocusPainted(false);
-
-        jButton1.setBackground(new java.awt.Color(65, 165, 238));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_edit_20px.png"))); // NOI18N
-        jButton1.setText("Mostrar");
-        jButton1.setBorder(null);
-        jButton1.setFocusPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -100,8 +98,6 @@ public class PnlCompras extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -110,8 +106,7 @@ public class PnlCompras extends javax.swing.JPanel {
                 .addGap(0, 21, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9))
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -176,7 +171,18 @@ public class PnlCompras extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Agregar pedido");
 
+        txtcan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcanKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcanKeyTyped(evt);
+            }
+        });
+
         jLabel9.setText("Fecha del pedido");
+
+        l2.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -220,6 +226,10 @@ public class PnlCompras extends javax.swing.JPanel {
                                             .addComponent(datepedido, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 43, Short.MAX_VALUE)))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(l2)
+                .addGap(207, 207, 207))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +268,9 @@ public class PnlCompras extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(63, 63, 63))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(l2)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -418,6 +430,41 @@ if(cantidad<= Mcantidad){
 }      
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void txtcanKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcanKeyTyped
+       
+                      char c =evt.getKeyChar(); 
+        if(c<'0' || c>'9' ) evt.consume();
+       
+        
+    }//GEN-LAST:event_txtcanKeyTyped
+public void validar(){
+
+
+if(txtcan.getText().isEmpty() ){
+
+l2.setText("Llene todos los campos");
+jButton3.setEnabled(false);
+}else{
+jButton3.setEnabled(true);
+l2.setText("");
+}
+
+
+}
+    private void txtcanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcanKeyReleased
+     
+        validar();
+    }//GEN-LAST:event_txtcanKeyReleased
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      
+        
+
+        
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     
         private void cagarcombobox(){
      
@@ -553,7 +600,6 @@ String proyecto = comproyecto.getSelectedItem().toString();
     private javax.swing.JComboBox<String> commaterial;
     private javax.swing.JComboBox<String> comproyecto;
     private rojeru_san.rsdate.RSDateChooser datepedido;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -568,6 +614,7 @@ String proyecto = comproyecto.getSelectedItem().toString();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel l2;
     private javax.swing.JTable tbcompra;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtcan;
