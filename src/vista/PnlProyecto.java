@@ -445,7 +445,7 @@ public class PnlProyecto extends javax.swing.JPanel {
            
 
             ps.executeUpdate();
-            ///JOptionPane.showMessageDialog(null, "Registro guardado");
+            
             Succes s = new Succes(new DashBoard(), true );
             s.titulo.setText("Éxito");
             s.msj.setText("Proyecto agregado");
@@ -502,7 +502,7 @@ public class PnlProyecto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txtbodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbodegaActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_txtbodegaActionPerformed
 
     private void txtnombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtnombreMouseClicked
@@ -564,7 +564,7 @@ public class PnlProyecto extends javax.swing.JPanel {
             cargarTabla();
         }
         else{
-//        JOptionPane.showMessageDialog(null, "Selecione el proyecto");
+
           errror er = new errror(new DashBoard(), true);
           er.titulo.setText("OOPS...");
           er.msj.setText("Parece que no has seleccionado ");
