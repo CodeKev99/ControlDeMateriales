@@ -7,6 +7,8 @@ package vista;
 
 import controlador.CambiaPanel;
 import FiveCodMover.FiveCodMoverJFrame;
+import controlador.sqlUsuarios;
+import controlador.usuarios;
 import necesario.FadeEffect;
 import vista.Alertas.Cerrar;
 import vista.Alertas.warnningCerrar;
@@ -21,10 +23,12 @@ public class DashBoard extends javax.swing.JFrame {
     /**
      * Creates new form DashBoard
      */
+    usuarios n = new usuarios();
     public DashBoard() {
         initComponents();
         setLocationRelativeTo(null);
         CambiaPanel cambiaPanel = new CambiaPanel(PanelPrincipal, new Inicio());
+        nombre.setText(n.getNombre());
         FadeEffect.fadeInFrame(this, 50, 0.1f);
     }
 
@@ -40,7 +44,7 @@ public class DashBoard extends javax.swing.JFrame {
         roboto1 = new rojeru_san.efectos.Roboto();
         pnlMenu = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
         btnReportes = new rojerusan.RSButtonHover();
         btnProyecto = new rojerusan.RSButtonHover();
         btnConsumo = new rojerusan.RSButtonHover();
@@ -73,10 +77,10 @@ public class DashBoard extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_male_user_110px.png"))); // NOI18N
         pnlMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 111));
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Nombre");
-        pnlMenu.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 26));
+        nombre.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 255, 255));
+        nombre.setText("Nombre");
+        pnlMenu.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 170, 26));
 
         btnReportes.setBackground(new java.awt.Color(33, 45, 62));
         btnReportes.setBorder(null);
@@ -443,10 +447,10 @@ public class DashBoard extends javax.swing.JFrame {
     private rojerusan.RSButtonHover btnReportes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel nombre;
     private javax.swing.JPanel pnlMenu;
     private rojeru_san.efectos.Roboto roboto1;
     // End of variables declaration//GEN-END:variables

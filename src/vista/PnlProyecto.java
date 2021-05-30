@@ -67,7 +67,7 @@ public class PnlProyecto extends javax.swing.JPanel {
         txtBuscar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -180,14 +180,19 @@ public class PnlProyecto extends javax.swing.JPanel {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 129, 34));
 
-        jButton1.setBackground(new java.awt.Color(65, 165, 238));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_edit_20px.png"))); // NOI18N
-        jButton1.setText("EDITAR");
-        jButton1.setBorder(null);
-        jButton1.setFocusPainted(false);
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 129, 33));
+        btnEdit.setBackground(new java.awt.Color(65, 165, 238));
+        btnEdit.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_edit_20px.png"))); // NOI18N
+        btnEdit.setText("EDITAR");
+        btnEdit.setBorder(null);
+        btnEdit.setFocusPainted(false);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 129, 33));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Agregar nuevo proyecto");
@@ -427,13 +432,7 @@ public class PnlProyecto extends javax.swing.JPanel {
                 txtnombre.requestFocus();
             }
             else{
-//                Cerrar c = new Cerrar();
-//                c.titulo.setText("OOPS...");
-//                c.msj.setText("Te hacen falta campos por llenar");
-//                c.msj1.setText("");
-//                c.setVisible(true);
-//                  JOptionPane.showMessageDialog(null, "Campos vacios");
-//                    erNombre.setVisible(true);
+//                
              int bodega = Integer.parseInt(txtbodega.getText());
              
             Connection con = Conexion.getConexion();
@@ -459,8 +458,8 @@ public class PnlProyecto extends javax.swing.JPanel {
                 txtnombre.setText("");
                 txtbodega.setText("");
                 txtdireccion.setText("");
-                fechaIni.setPlaceholder("Selecionar Fecha");
-                fechafin.setPlaceholder("Selecionar Fecha");
+                fechaIni.setDatoFecha(null);
+                fechafin.setDatoFecha(null);
                 
             cargarTabla();
                     
@@ -550,6 +549,30 @@ public class PnlProyecto extends javax.swing.JPanel {
        
     }//GEN-LAST:event_fechafinMouseClicked
 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        EditProject e = new EditProject(new DashBoard(), true);
+        erNombre.setVisible(false);
+        erBodega.setVisible(false);
+        erDirec.setVisible(false);
+        
+        int fila = tbpro.getSelectedRow();
+        if(fila >= 0){
+        e.id = Integer.parseInt(tbpro.getValueAt(fila, 0).toString());  
+        e.txtnombre.setText(tbpro.getValueAt(fila, 2).toString());
+        e.txtbodega.setText(tbpro.getValueAt(fila, 1).toString());
+        e.txtdireccion.setText(tbpro.getValueAt(fila, 3).toString());
+        e.fechaIni.setDatoFecha((java.util.Date) tbpro.getValueAt(fila, 4));
+        e.fechafin.setDatoFecha((java.util.Date) tbpro.getValueAt(fila, 5));
+         e.setVisible(true);
+        cargarTabla();
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "Selecione el proyecto");
+        
+        }
+       
+    }//GEN-LAST:event_btnEditActionPerformed
+
         private void cargarTabla()  {
 
         DefaultTableModel modeloTabla = (DefaultTableModel) tbpro.getModel();
@@ -582,25 +605,29 @@ public class PnlProyecto extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e.toString());
 
         }
+        
+        
 
     }
     
     
     
     
-    
+    public void editar(){
+        
+        }
     
     
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEdit;
     private javax.swing.JLabel erBodega;
     private javax.swing.JLabel erDirec;
     private javax.swing.JLabel erNombre;
     private rojeru_san.rsdate.RSDateChooser fechaIni;
     private rojeru_san.rsdate.RSDateChooser fechafin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -619,7 +646,7 @@ public class PnlProyecto extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable tbpro;
+    public javax.swing.JTable tbpro;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtbodega;
     private javax.swing.JTextField txtdireccion;
