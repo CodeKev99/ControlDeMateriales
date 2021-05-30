@@ -231,7 +231,7 @@ String proyecto = conbox.getSelectedItem().toString();
         }
         try {
             Connection con = Conexion.getConexion();
-            ps = con.prepareStatement("SELECT m.nombre AS material, SUM(i.cantidad) AS Cantidad,m.medida,m.precio, SUM(i.cantidad*m.precio) AS TotalP FROM materiales m JOIN Bodegas i ON m.idMaterial=i.idMaterial JOIN proyec p ON i.idProyec=p.idProyec WHERE p.Nbodega=? GROUP BY m.nombre,m.medida, i.cantidad, m.precio ORDER BY 2,1;");
+            ps = con.prepareStatement("SELECT m.nombre AS material, SUM(i.cantidad) AS Cantidad,m.medida,m.precio, SUM(i.cantidad*m.precio) AS TotalP FROM materiales m JOIN Bodegas i ON m.idMaterial=i.idMaterial JOIN proyec p ON i.idProyec=p.idProyec WHERE p.Nbodega=? GROUP BY m.nombre, m.medida, m.precio ORDER BY 2,1;");
             ps.setInt(1, bodega);
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
