@@ -8,6 +8,7 @@ package vista;
 import controlador.CambiaPanel;
 import controlador.sqlUsuarios;
 import controlador.Conexion;
+import static controlador.Conexion.getConexion;
 import controlador.hash;
 import controlador.usuarios;
 import java.sql.Connection;
@@ -30,7 +31,26 @@ public class registro extends javax.swing.JPanel {
      * Creates new form PlnProveedores
      */
     public registro() {
+
         initComponents();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Conexion conn = new Conexion();
+        Connection con = getConexion();
+        
+        try{
+            String sql ="SELECT * FROM tipo_usuario";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            cbxTipos.addItem("Seleccione opcion");
+            while (rs.next()){
+                cbxTipos.addItem(rs.getString("nombre"));
+            }
+            rs.close();
+            
+        }catch(SQLException ex){
+            System.err.println(ex.toString());
+        }
 
     }
 
@@ -41,6 +61,7 @@ public class registro extends javax.swing.JPanel {
         txtConfirmaPassword.setText("");
         txtNombre.setText("");
         txtCorreo.setText("");
+        cbxTipos.setSelectedIndex(0);
 
     }
 
@@ -65,6 +86,8 @@ public class registro extends javax.swing.JPanel {
         txtCorreo = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         txtConfirmaPassword = new javax.swing.JPasswordField();
+        jLabel9 = new javax.swing.JLabel();
+        cbxTipos = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -158,6 +181,9 @@ public class registro extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setText("Permisos de Usuario:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -174,7 +200,8 @@ public class registro extends javax.swing.JPanel {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel10)
@@ -182,9 +209,10 @@ public class registro extends javax.swing.JPanel {
                             .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                             .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                             .addComponent(txtPassword)
-                            .addComponent(txtConfirmaPassword)))
+                            .addComponent(txtConfirmaPassword)
+                            .addComponent(cbxTipos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
+                        .addGap(169, 169, 169)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
@@ -215,9 +243,13 @@ public class registro extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(cbxTipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -236,7 +268,12 @@ public class registro extends javax.swing.JPanel {
 
         sqlUsuarios modSql = new sqlUsuarios();
         usuarios mod = new usuarios();
-
+        
+        // COMBOBOX VALUE
+        int tipo= cbxTipos.getSelectedIndex();
+        
+        if (tipo == 1 || tipo == 2) {
+            
         //Validacion de campos de texto de registro
         String pass = new String(txtPassword.getPassword());
         String passCon = new String(txtConfirmaPassword.getPassword());
@@ -260,7 +297,7 @@ public class registro extends javax.swing.JPanel {
                         mod.setContrasena(nuevoPass);
                         mod.setNombre(txtNombre.getText());
                         mod.setCorreo(txtCorreo.getText());
-                        mod.setId_tipo(1);
+                        mod.setId_tipo(tipo);
 
                         if (modSql.registrar(mod)) {
                             JOptionPane.showMessageDialog(null, "Registro Guardado");
@@ -280,6 +317,10 @@ public class registro extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
             }
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe escoger tipo de usuario.");
+        }
+        
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
@@ -289,6 +330,7 @@ public class registro extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JComboBox<String> cbxTipos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -297,6 +339,7 @@ public class registro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

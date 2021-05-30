@@ -5,8 +5,8 @@
  */
 package vista;
 
-
 import controlador.Conexion;
+import controlador.sqlUsuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,14 +45,14 @@ public class PnlProveedores extends javax.swing.JPanel {
         }
         try {
             Connection con = Conexion.getConexion();
-            ps = con.prepareStatement("SELECT empresa, encargado, telefono, direccion, correo FROM proveedor");
+            ps = con.prepareStatement("SELECT idProve,empresa, encargado, telefono, direccion, correo FROM proveedor");
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
             while (rs.next()) {
                 Object[] fila = new Object[columnas];
                 for (int indice = 0; indice < columnas; indice++) {
-                    fila[indice] = rs.getObject(indice + 1);
+                    fila[indice] = rs.getObject(indice +1);
                 }
                 modeloTabla.addRow(fila);
 
@@ -212,19 +212,25 @@ public class PnlProveedores extends javax.swing.JPanel {
 
         jLabel8.setText("Correo");
 
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
+
         jtProveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Empresa", "Encargado", "Telefono", "Direccion", "Correo"
+                "id", "Empresa", "Encargado", "Telefono", "Direccion", "Correo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, true, true, true
+                true, false, false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -253,7 +259,7 @@ public class PnlProveedores extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(10, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -413,54 +419,75 @@ public class PnlProveedores extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarMouseClicked
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        sqlUsuarios modSql = new sqlUsuarios();
+
         String empresa = txtEmpresa.getText();
         String encargado = txtEncargado.getText();
-
-        int telefono = Integer.parseInt(txtTelefono.getText());
         String direccion = txtDireccion.getText();
         String correo = txtCorreo.getText();
 
-        try {
-            Connection con = Conexion.getConexion();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO proveedor (empresa, encargado, telefono, direccion, correo) VALUES (?,?,?,?,?)");
-            ps.setString(1, empresa);
-            ps.setString(2, encargado);
-            ps.setInt(3, telefono);
-            ps.setString(4, direccion);
-            ps.setString(5, correo);
+        if (txtTelefono.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Hay registros vacios");
 
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Registro guardado");
+        } else if (modSql.esEmail(txtCorreo.getText())) {
+            int telefono = Integer.parseInt(txtTelefono.getText());
 
-            limpiar();
-            cargarTabla();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            if (txtEmpresa.getText().equals("") || txtEncargado.getText().equals("")
+                    || txtCorreo.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Hay registros vacios");
+
+            } else {
+                try {
+                    Connection con = Conexion.getConexion();
+                    PreparedStatement ps = con.prepareStatement("INSERT INTO proveedor (empresa, encargado, telefono, direccion, correo) VALUES (?,?,?,?,?)");
+                    ps.setString(1, empresa);
+                    ps.setString(2, encargado);
+                    ps.setInt(3, telefono);
+                    ps.setString(4, direccion);
+                    ps.setString(5, correo);
+
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Registro guardado");
+
+                    limpiar();
+                    cargarTabla();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e.toString());
+
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "El correo electronico no es valido");
         }
-
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
-        PreparedStatement ps;
-        ResultSet rs;
-
+        PreparedStatement ps=null;
+        
         try {
-            int fila = jtProveedor.getSelectedRow();
-            String id = jtProveedor.getValueAt(fila, 0).toString();
+             int fila = jtProveedor.getSelectedRow();
+            int id = Integer.parseInt(jtProveedor.getValueAt(fila, 0).toString());
 
             Connection con = Conexion.getConexion();
             ps = con.prepareStatement("DELETE FROM proveedor WHERE idProve=?");
-            ps.setString(1, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
 
             cargarTabla();
-
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
 
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
