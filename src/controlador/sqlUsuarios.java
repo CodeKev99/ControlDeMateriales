@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
  * @author Mauricio
  */
 public class sqlUsuarios extends Conexion {
+    
+     public String nombre = "";
 
     public boolean registrar(usuarios usr) {
 
@@ -38,7 +40,7 @@ public class sqlUsuarios extends Conexion {
         }
 
     }
-
+    
     public int existeUsuario(String usuario) {
 
         PreparedStatement ps = null;
@@ -85,12 +87,13 @@ public class sqlUsuarios extends Conexion {
                     usr.setId(rs.getInt(1));
                     usr.setNombre(rs.getString(4));
                     usr.setId_tipo(rs.getInt(5));
+                    nombre = rs.getString(4);
                     return true;
                 } else {
                     return false;
                 }
             }
-            return false;
+                       return false;
 
         } catch (SQLException ex) {
             Logger.getLogger(sqlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -107,4 +110,5 @@ public class sqlUsuarios extends Conexion {
 
         return mather.find();
     }
+    
 }

@@ -252,6 +252,7 @@ public class Login extends javax.swing.JFrame {
             if (modSql.login(mod)) {
 
                 DashBoard D = new DashBoard();
+                D.lblNombre.setText(modSql.nombre);
                 D.show();
                 this.dispose();
             } else {
@@ -299,7 +300,9 @@ public class Login extends javax.swing.JFrame {
             if (modSql.login(mod)) {
 
                 DashBoard D = new DashBoard();
+                D.lblNombre.setText(modSql.nombre);
                 D.show();
+                
                 this.dispose();
             } else {
 //                JOptionPane.showMessageDialog(null, "Datos incorrectos");

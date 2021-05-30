@@ -491,6 +491,9 @@ public class EditProject extends javax.swing.JDialog {
 
     private void txtbodegaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbodegaKeyTyped
         erBodega.setVisible(false);
+        
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9') evt.consume();
     }//GEN-LAST:event_txtbodegaKeyTyped
 
     private void fechaIniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechaIniMouseClicked

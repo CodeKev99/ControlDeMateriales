@@ -42,7 +42,6 @@ public class PnlProyecto extends javax.swing.JPanel {
         erNombre.setVisible(false);
         erBodega.setVisible(false);
         erDirec.setVisible(false);
-        
         cargarTabla();
         
         
@@ -66,7 +65,7 @@ public class PnlProyecto extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -164,21 +163,21 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 12, 810, -1));
 
-        jButton2.setBackground(new java.awt.Color(65, 165, 238));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_delete_trash_20px.png"))); // NOI18N
-        jButton2.setText("ELIMINAR");
-        jButton2.setBorder(null);
-        jButton2.setFocusPainted(false);
-        jButton2.setMaximumSize(new java.awt.Dimension(79, 20));
-        jButton2.setMinimumSize(new java.awt.Dimension(79, 20));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(65, 165, 238));
+        btnEliminar.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_delete_trash_20px.png"))); // NOI18N
+        btnEliminar.setText("ELIMINAR");
+        btnEliminar.setBorder(null);
+        btnEliminar.setFocusPainted(false);
+        btnEliminar.setMaximumSize(new java.awt.Dimension(79, 20));
+        btnEliminar.setMinimumSize(new java.awt.Dimension(79, 20));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 129, 34));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 129, 34));
 
         btnEdit.setBackground(new java.awt.Color(65, 165, 238));
         btnEdit.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
@@ -478,34 +477,29 @@ public class PnlProyecto extends javax.swing.JPanel {
         
     
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+      int fila = tbpro.getSelectedRow();
+      if(fila>=0){
+          Eliminar();
+          
+          Succes s = new Succes(new DashBoard(), true );
+            s.titulo.setText("Éxito");
+            s.msj.setText("Proyecto Eliminado");
+            s.msj1.setText("");
+            s.setVisible(true);
+      }
+      else{
+                errror r = new errror(new DashBoard(), true);
+                r.titulo.setText("OOPS...");
+                r.msj.setText("Parece que no has seleccionado");
+                r.msj1.setText("un proyecto");
+                r.setVisible(true);
+      
+      }
+        
        
-                PreparedStatement ps;
-        ResultSet rs;
-
-        try {
-            int fila = tbpro.getSelectedRow();
-            int id = Integer.parseInt(tbpro.getValueAt(fila, 0).toString());
-
-            Connection con = Conexion.getConexion();
-            ps = con.prepareStatement("DELETE FROM proyec WHERE idProyec=?");
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
-            cargarTabla();
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-
-        }
-        
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+          
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txtbodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbodegaActionPerformed
         // TODO add your handling code here:
@@ -535,6 +529,9 @@ public class PnlProyecto extends javax.swing.JPanel {
 
     private void txtbodegaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbodegaKeyTyped
          erBodega.setVisible(false);
+         
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9') evt.consume();
     }//GEN-LAST:event_txtbodegaKeyTyped
 
     private void txtdireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyTyped
@@ -557,22 +554,29 @@ public class PnlProyecto extends javax.swing.JPanel {
         
         int fila = tbpro.getSelectedRow();
         if(fila >= 0){
-        e.id = Integer.parseInt(tbpro.getValueAt(fila, 0).toString());  
-        e.txtnombre.setText(tbpro.getValueAt(fila, 2).toString());
-        e.txtbodega.setText(tbpro.getValueAt(fila, 1).toString());
-        e.txtdireccion.setText(tbpro.getValueAt(fila, 3).toString());
-        e.fechaIni.setDatoFecha((java.util.Date) tbpro.getValueAt(fila, 4));
-        e.fechafin.setDatoFecha((java.util.Date) tbpro.getValueAt(fila, 5));
-         e.setVisible(true);
-        cargarTabla();
+            e.id = Integer.parseInt(tbpro.getValueAt(fila, 0).toString());  
+            e.txtnombre.setText(tbpro.getValueAt(fila, 2).toString());
+            e.txtbodega.setText(tbpro.getValueAt(fila, 1).toString());
+            e.txtdireccion.setText(tbpro.getValueAt(fila, 3).toString());
+            e.fechaIni.setDatoFecha((java.util.Date) tbpro.getValueAt(fila, 4));
+            e.fechafin.setDatoFecha((java.util.Date) tbpro.getValueAt(fila, 5));
+             e.setVisible(true);
+            cargarTabla();
         }
         else{
-        JOptionPane.showMessageDialog(null, "Selecione el proyecto");
+//        JOptionPane.showMessageDialog(null, "Selecione el proyecto");
+          errror er = new errror(new DashBoard(), true);
+          er.titulo.setText("OOPS...");
+          er.msj.setText("Parece que no has seleccionado ");
+          er.msj1.setText("un proyecto");
+          er.setVisible(true);
         
         }
        
     }//GEN-LAST:event_btnEditActionPerformed
-
+        
+    
+    
         private void cargarTabla()  {
 
         DefaultTableModel modeloTabla = (DefaultTableModel) tbpro.getModel();
@@ -607,15 +611,34 @@ public class PnlProyecto extends javax.swing.JPanel {
         }
         
         
+        
 
+    }
+    
+    private void Eliminar(){
+    PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            int fila = tbpro.getSelectedRow();
+            int id = Integer.parseInt(tbpro.getValueAt(fila, 0).toString());
+
+            Connection con = Conexion.getConexion();
+            ps = con.prepareStatement("DELETE FROM proyec WHERE idProyec=?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            cargarTabla();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+
+        }
+    
     }
     
     
     
-    
-    public void editar(){
-        
-        }
     
     
     
@@ -623,12 +646,12 @@ public class PnlProyecto extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel erBodega;
     private javax.swing.JLabel erDirec;
     private javax.swing.JLabel erNombre;
     private rojeru_san.rsdate.RSDateChooser fechaIni;
     private rojeru_san.rsdate.RSDateChooser fechafin;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -652,4 +675,6 @@ public class PnlProyecto extends javax.swing.JPanel {
     private javax.swing.JTextField txtdireccion;
     public javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
+
+
 }

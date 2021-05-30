@@ -9,6 +9,7 @@ package vista.Alertas;
 import java.util.Timer;
 import java.util.TimerTask;
 import vista.DashBoard;
+import vista.PnlProyecto;
 
 /**
  *
@@ -154,6 +155,8 @@ public class Succes extends javax.swing.JDialog {
         };
         timer = new Timer();
         timer.schedule(task, 0, 2);
+        
+       
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void formWindowOpened() {                                  
