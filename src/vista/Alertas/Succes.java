@@ -240,7 +240,7 @@ public class Succes extends javax.swing.JDialog {
     }
 
     private void Ubicar(int y) {
-         this.setLocation(750, y - 10);
+         this.setLocationRelativeTo(null);
 
        
     }
