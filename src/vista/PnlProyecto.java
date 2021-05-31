@@ -97,7 +97,7 @@ public class PnlProyecto extends javax.swing.JPanel {
 
             },
             new String [] {
-                "id", "N-bodega", "Nombre", "Direccion", "F-Inicio", "F-Finl"
+                "id", "N-bodega", "Nombre", "Direccion", "F-Inicio", "F-Final"
             }
         ));
         jScrollPane2.setViewportView(tbpro);
@@ -113,7 +113,6 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/iconos/icons8_paste_30px_1.png"))); // NOI18N
 
-        txtBuscar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(51, 51, 51));
         txtBuscar.setText("BUSCAR");
         txtBuscar.setBorder(null);
@@ -213,7 +212,6 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtdireccion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtdireccion.setBorder(null);
         txtdireccion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -227,7 +225,6 @@ public class PnlProyecto extends javax.swing.JPanel {
         });
         jPanel3.add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 130, 30));
 
-        txtnombre.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtnombre.setBorder(null);
         txtnombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -248,7 +245,6 @@ public class PnlProyecto extends javax.swing.JPanel {
         });
         jPanel3.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 130, 30));
 
-        txtbodega.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtbodega.setBorder(null);
         txtbodega.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -389,14 +385,6 @@ public class PnlProyecto extends javax.swing.JPanel {
         }
 
         
-        
-        
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -496,8 +484,6 @@ public class PnlProyecto extends javax.swing.JPanel {
                 r.setVisible(true);
       
       }
-        
-       
           
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -575,8 +561,6 @@ public class PnlProyecto extends javax.swing.JPanel {
        
     }//GEN-LAST:event_btnEditActionPerformed
         
-    
-    
         private void cargarTabla()  {
 
         DefaultTableModel modeloTabla = (DefaultTableModel) tbpro.getModel();
@@ -585,7 +569,6 @@ public class PnlProyecto extends javax.swing.JPanel {
         ResultSet rs;
         ResultSetMetaData rsmd;
         int columnas;
-        String name="";
         int[] ancho = {5, 5, 20, 20, 20, 20};
         for (int i = 0; i < tbpro.getColumnCount(); i++) {
             tbpro.getColumnModel().getColumn(i).setPreferredWidth(ancho[i]);
@@ -610,9 +593,6 @@ public class PnlProyecto extends javax.swing.JPanel {
 
         }
         
-        
-        
-
     }
     
     private void Eliminar(){
@@ -637,13 +617,6 @@ public class PnlProyecto extends javax.swing.JPanel {
     
     }
     
-    
-    
-    
-    
-    
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEliminar;

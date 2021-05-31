@@ -63,7 +63,7 @@
                     <Column editable="true" title="Nombre" type="java.lang.Object"/>
                     <Column editable="true" title="Direccion" type="java.lang.Object"/>
                     <Column editable="true" title="F-Inicio" type="java.lang.Object"/>
-                    <Column editable="true" title="F-Finl" type="java.lang.Object"/>
+                    <Column editable="true" title="F-Final" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -185,9 +185,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtBuscar">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="0"/>
-                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
                 </Property>
@@ -329,9 +326,6 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtdireccion">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="0"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -348,9 +342,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtnombre">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="0"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -371,9 +362,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtbodega">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="12" style="0"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>

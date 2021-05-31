@@ -1,7 +1,7 @@
 package vista;
 
 import FiveCodMover.FiveCodMoverJFrame;
-import com.sun.awt.AWTUtilities;
+//import com.sun.awt.AWTUtilities;
 import controlador.CambiaPanel;
 import controlador.hash;
 import controlador.sqlUsuarios;
@@ -30,7 +30,7 @@ public class Login extends javax.swing.JFrame {
         labelError.setVisible(false);
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
-        AWTUtilities.setWindowShape(this, forma);
+//        AWTUtilities.setWindowShape(this, forma);
         AWTUtilitie.setOpaque(this, false);
         FadeEffect.fadeInFrame(this, 50, 0.1f);
        
